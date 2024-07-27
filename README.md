@@ -174,7 +174,7 @@
 
 ### 画面遷移図
 
-https://www.figma.com/design/ILriTmm6Y3jK0TzcAH8Gk7/i-code_%E7%94%BB%E9%9D%A2%E5%A4%89%E9%81%B7%E5%9B%B3?node-id=0-1&t=vL65sCvROdAtakbB-1
+https://www.figma.com/design/ILriTmm6Y3jK0TzcAH8Gk7/i-code_%E7%94%BB%E9%9D%A2%E5%A4%89%E9%81%B7%E5%9B%B3?node-id=0-1&t=9lWGiRO24nJmaDki-1
 
 ### README に記載した機能
 
