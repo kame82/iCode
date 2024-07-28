@@ -210,3 +210,8 @@ MVP リリース項目
 直接変更できるものではなく、一旦メールなどを介して専用のページで変更する画面遷移になっているか
 
 - [x] パスワード
+
+### ER 図
+
+https://dbdiagram.io/d/i-Code-66a61d2e8b4bb5230e8ba506
+![alt text](<Screenshot 2024-07-28 at 22.24.33.png>)
