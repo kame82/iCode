@@ -1,0 +1,10 @@
+<header class="bg-gray-950">
+  <div class="px-10 py-5 flex justify-between">
+    <h1><%=link_to "iCode", root_path, class: "text-4xl font-bold" %></h1>
+    <div class="flex gap-x-7 items-center">
+      <a href="#" class="link link-hover">コード一覧</a>
+      <%= link_to "ログイン", new_login_path ,class: "link link-hover" %>
+      <%= link_to "新規登録", new_user_path, class: "link link-hover" %>
+    </div>
+  </div>
+</header>
