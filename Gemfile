@@ -72,3 +72,10 @@ end
 gem "dockerfile-rails", ">= 1.6", :group => :development
 
 gem 'sass-rails' #sass-rails is a Sass adapter for the Rails asset pipeline.
+
+gem "devise", "~> 4.9"
+
+gem 'omniauth'
+gem 'omniauth-rails_csrf_protection'
+gem 'omniauth-github'
+gem 'omniauth-google-oauth2'
