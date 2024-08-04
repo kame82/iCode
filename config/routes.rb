@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  root  'static_pages#top'
+  devise_for :users
+  root to: 'static_pages#top'
   resources :users, only: [:new, :create]
-  resources :user_sessions, only: [:new, :create, :destroy], as: :login
+  # resources :user_sessions, only: [:new, :create, :destroy], as: :login
   resources :tasks
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
