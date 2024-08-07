@@ -4,10 +4,10 @@
     <div class="flex gap-x-7 items-center">
       <a href="#" class="link link-hover">コード一覧</a>
       <% if user_signed_in? %>
-        <%= link_to "ログアウト", destroy_user_session_path, data: {turbo_method: :delete}, class: "link link-hover" %>
+        <%= link_to t('header.logout'), destroy_user_session_path, data: {turbo_method: :delete}, class: "link link-hover" %>
       <% else %>
-        <%= link_to "ログイン", new_user_session_path ,class: "link link-hover" %>
-        <%= link_to "新規登録", new_user_registration_path, class: "link link-hover" %>
+        <%= link_to t('header.login'), new_user_session_path ,class: "link link-hover" %>
+        <%= link_to t('header.signup'), new_user_registration_path, class: "link link-hover" %>
       <% end %>
     </div>
   </div>

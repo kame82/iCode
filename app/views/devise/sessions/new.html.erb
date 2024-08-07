@@ -1,5 +1,5 @@
 <div class="container bg-gray-200 mx-auto my-20">
-  <h2 class="text-center">Log in</h2>
+  <h2 class="text-center"><%= t('session_page.Login')%></h2>
 
   <div class="flex">
     <%= form_for(resource, as: resource_name, html:{class: "w-1/2"}, url: session_path(resource_name)) do |f| %>
@@ -17,13 +17,14 @@
           <%= f.label :remember_me %>
         </div>
       <% end %>
+      <p class="text-center">パスワードを忘れた方（再設定）</p>
       <div class="actions text-center">
-        <%= f.submit "Log in" %>
+        <%= f.submit t('session_page.Login') %>
       </div>
     <% end %>
     <div class="w-1/2">
-      <button href="#" class="block mx-auto">Googleで登録</button>
-      <button href="#" class="block mx-auto">Githubで登録</button>
+      <button href="#" class="block mx-auto"><%= t('session_page.Login by Google') %></button>
+      <button href="#" class="block mx-auto"><%= t('session_page.Login by Github') %></button>
     </div>
   </div>
 </div>

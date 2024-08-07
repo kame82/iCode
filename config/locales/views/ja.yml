@@ -1,0 +1,13 @@
+ja:
+  header:
+    code_index: コード一覧
+    signup: 新規登録
+    login: ログイン
+    logout: ログアウト
+  session_page:
+    Login: ログイン
+    Login by Google: Googleでログイン
+    Login by Github: GitHubでログイン
+    Sign up: 新規登録
+    Sing up by Google: Googleで登録
+    Sing up by Github: GitHubで登録
