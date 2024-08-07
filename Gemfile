@@ -75,6 +75,9 @@ gem 'dockerfile-rails', '>= 1.6', group: :development
 gem 'sass-rails' # sass-rails is a Sass adapter for the Rails asset pipeline.
 
 gem 'devise', '~> 4.9'
+gem 'devise-i18n'
+
+gem 'rails-i18n'
 
 gem 'omniauth'
 gem 'omniauth-github'
