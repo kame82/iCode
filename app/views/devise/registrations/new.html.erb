@@ -1,6 +1,6 @@
+    <%= render "devise/shared/error_messages", resource: resource %>
 <div class="container bg-gray-200 mx-auto my-20">
   <h2 class="text-center"><%= t('session_page.Sign up')%></h2>
-    <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="flex">
     <%= form_for(resource, as: resource_name, html:{class: "w-1/2"} , url: registration_path(resource_name)) do |f| %>
