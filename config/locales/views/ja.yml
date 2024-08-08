@@ -4,6 +4,10 @@ ja:
     signup: 新規登録
     login: ログイン
     logout: ログアウト
+  footer:
+    contact: お問い合わせ
+    terms: 利用規約
+    privacy: プライバシーポリシー
   session_page:
     Login: ログイン
     Login by Google: Googleでログイン
