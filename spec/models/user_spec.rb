@@ -16,7 +16,7 @@ RSpec.describe User, type: :model do
 
       user2 = build(:user)
       expect(user2).to be_invalid
-      expect(user2.errors.messages[:email]).to include('has already been taken')
+      expect(user2.errors.messages[:email]).to include(I18n.t('errors.messages.taken'))
     end
 
     pending "add some examples to (or delete) #{__FILE__}"

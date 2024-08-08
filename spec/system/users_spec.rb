@@ -12,11 +12,11 @@ RSpec.describe 'Users', type: :system do
       visit new_user_session_path
       fill_in 'user[email]', with: user.email
       fill_in 'user[password]', with: user.password
-      click_button 'Log in'
+      click_button 'ログイン'
       expect(page).to have_content('ログアウト')
       click_on 'ログアウト'
       expect(page).to have_content('ログイン')
-      expect(page).to have_no_content('error')
+      expect(page).to have_no_content('違います')
     end
 
     it 'ユーザー登録機能のテスト' do
@@ -25,8 +25,8 @@ RSpec.describe 'Users', type: :system do
       fill_in 'user[email]', with: 'sample@email'
       fill_in 'user[password]', with: 'password'
       fill_in 'user[password_confirmation]', with: 'password'
-      click_button 'Sign'
-      expect(page).to have_no_content('error')
+      click_button '新規登録'
+      expect(page).to have_no_content('違います')
     end
   end
 
@@ -37,8 +37,8 @@ RSpec.describe 'Users', type: :system do
       fill_in 'user[email]', with: 'sample@email'
       fill_in 'user[password]', with: 'password'
       fill_in 'user[password_confirmation]', with: 'password'
-      click_button 'Sign up'
-      expect(page).to have_content('error')
+      click_button '新規登録'
+      expect(page).to have_content('名前を入力してください')
     end
 
     it 'ユーザー登録機能のテスト emailバリ確認' do
@@ -47,8 +47,8 @@ RSpec.describe 'Users', type: :system do
       fill_in 'user[email]', with: ''
       fill_in 'user[password]', with: 'password'
       fill_in 'user[password_confirmation]', with: 'password'
-      click_button 'Sign up'
-      expect(page).to have_content('error')
+      click_button '新規登録'
+      expect(page).to have_content('Eメールを入力してください')
     end
 
     it 'ユーザー登録機能のテスト passwordバリ確認' do
@@ -57,8 +57,8 @@ RSpec.describe 'Users', type: :system do
       fill_in 'user[email]', with: 'sample@email'
       fill_in 'user[password]', with: ''
       fill_in 'user[password_confirmation]', with: 'password'
-      click_button 'Sign up'
-      expect(page).to have_content('error')
+      click_button '新規登録'
+      expect(page).to have_content('一致しません')
     end
 
     it 'ユーザー登録機能のテスト password_confirmationバリ確認' do
@@ -67,8 +67,8 @@ RSpec.describe 'Users', type: :system do
       fill_in 'user[email]', with: 'sample@email'
       fill_in 'user[password]', with: 'password'
       fill_in 'user[password_confirmation]', with: ''
-      click_button 'Sign up'
-      expect(page).to have_content('error')
+      click_button '新規登録'
+      expect(page).to have_content('一致しません')
     end
 
     it 'ログイン機能のテスト password 文字数バリ確認' do
@@ -77,8 +77,8 @@ RSpec.describe 'Users', type: :system do
       fill_in 'user[email]', with: 'sample@email'
       fill_in 'user[password]', with: '123'
       fill_in 'user[password_confirmation]', with: '123'
-      click_button 'Sign up'
-      expect(page).to have_content('error')
+      click_button '新規登録'
+      expect(page).to have_content('パスワードは6文字以上')
     end
 
     it 'ログイン機能のテスト email重複確認' do
@@ -87,8 +87,8 @@ RSpec.describe 'Users', type: :system do
       fill_in 'user[email]', with: user.email
       fill_in 'user[password]', with: 'password'
       fill_in 'user[password_confirmation]', with: 'password'
-      click_button 'Sign up'
-      expect(page).to have_content('error')
+      click_button '新規登録'
+      expect(page).to have_content('Eメールはすでに存在')
     end
   end
 
