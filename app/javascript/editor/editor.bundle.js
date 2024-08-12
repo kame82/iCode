@@ -28877,8 +28877,20 @@
      },
    ]);
 
+   // エディタの内容が変更されたときに更新
+   const Editor_updateListener = EditorView.updateListener.of(function (e) {
+     if (e.docChanged) {
+       // syncEditor();
+       submit();
+     }
+   });
+
+   // エディタ(textarea)の非表示
+   // const editorSource = document.querySelector("#editorSource");
+   // editorSource.setAttribute("hidden", "true");
+
    // エディタの初期化
-   new EditorView({
+   let editor_HTML = new EditorView({
      extensions: [
        basicSetup,
        minimalSetup,
@@ -28888,9 +28900,27 @@
        syntaxHighlighting(myHighlightStyle),
        keymap.of([indentWithTab]),
        javascript(),
+       Editor_updateListener,
      ],
      // parent: document.body,
-     parent: document.querySelector("#editor"),
+     parent: document.querySelector("#editor_HTML"),
    });
+
+   // const updateEditor = editor_HTML.updateListeners.of((update) => {
+   //   console.log("update");
+   // });
+
+   // エディタの内容をtextareaに同期
+   const syncEditor = () => {
+     editor_HTML.value = editor_HTML.state.sliceDoc();
+     // console.log(editor_HTML.value);
+   };
+
+   document.querySelector("#submit_btn");
+
+   function submit() {
+     syncEditor();
+     document.querySelector("#editorSource").value = editor_HTML.value;
+   }
 
 })();
