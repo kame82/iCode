@@ -58,8 +58,16 @@ const myHighlightStyle = HighlightStyle.define([
   },
 ]);
 
+// エディタの内容が変更されたときに更新
+const Editor_updateListener = EditorView.updateListener.of(function (e) {
+  if (e.docChanged) {
+    submitTextarea();
+  }
+});
+
 // エディタの初期化
-let editor = new EditorView({
+let editor_HTML = new EditorView({
+  // doc: document.querySelector("#editorSource_HTML").value,
   extensions: [
     basicSetup,
     minimalSetup,
@@ -69,7 +77,31 @@ let editor = new EditorView({
     syntaxHighlighting(myHighlightStyle),
     keymap.of([indentWithTab]),
     javascript(),
+    Editor_updateListener,
   ],
-  // parent: document.body,
-  parent: document.querySelector("#editor"),
+  parent: document.querySelector("#editor_HTML"),
+});
+
+// エディタの内容をtextareaに同期
+const syncEditor = () => {
+  editor_HTML.value = editor_HTML.state.sliceDoc();
+};
+
+// エディタの内容をtextareaに送信
+function submitTextarea() {
+  syncEditor();
+  document.querySelector("#editorSource_HTML").value = editor_HTML.value;
+}
+
+// エディタ(textarea)の非表示
+// const editorSource_HTML = document.querySelector("#editorSource_HTML");
+// editorSource_HTML.setAttribute("hidden", "true");
+
+// エディタの初期内容を設定
+editor_HTML.dispatch({
+  changes: {
+    from: 0,
+    to: editor_HTML.state.doc.length, // 既存のドキュメント全体を削除
+    insert: document.querySelector("#editorSource_HTML").value, // 新しい内容を挿入
+  },
 });
