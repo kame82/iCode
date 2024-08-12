@@ -28880,17 +28880,13 @@
    // エディタの内容が変更されたときに更新
    const Editor_updateListener = EditorView.updateListener.of(function (e) {
      if (e.docChanged) {
-       // syncEditor();
-       submit();
+       submitTextarea();
      }
    });
 
-   // エディタ(textarea)の非表示
-   // const editorSource = document.querySelector("#editorSource");
-   // editorSource.setAttribute("hidden", "true");
-
    // エディタの初期化
    let editor_HTML = new EditorView({
+     // doc: document.querySelector("#editorSource_HTML").value,
      extensions: [
        basicSetup,
        minimalSetup,
@@ -28902,25 +28898,31 @@
        javascript(),
        Editor_updateListener,
      ],
-     // parent: document.body,
      parent: document.querySelector("#editor_HTML"),
    });
-
-   // const updateEditor = editor_HTML.updateListeners.of((update) => {
-   //   console.log("update");
-   // });
 
    // エディタの内容をtextareaに同期
    const syncEditor = () => {
      editor_HTML.value = editor_HTML.state.sliceDoc();
-     // console.log(editor_HTML.value);
    };
 
-   document.querySelector("#submit_btn");
-
-   function submit() {
+   // エディタの内容をtextareaに送信
+   function submitTextarea() {
      syncEditor();
-     document.querySelector("#editorSource").value = editor_HTML.value;
+     document.querySelector("#editorSource_HTML").value = editor_HTML.value;
    }
+
+   // エディタ(textarea)の非表示
+   // const editorSource_HTML = document.querySelector("#editorSource_HTML");
+   // editorSource_HTML.setAttribute("hidden", "true");
+
+   // エディタの初期内容を設定
+   editor_HTML.dispatch({
+     changes: {
+       from: 0,
+       to: editor_HTML.state.doc.length, // 既存のドキュメント全体を削除
+       insert: document.querySelector("#editorSource_HTML").value, // 新しい内容を挿入
+     },
+   });
 
 })();

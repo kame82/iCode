@@ -10,9 +10,10 @@ class CodesController < ApplicationController
     @code = Code.new(code_params)
     @code.user = current_user
     if @code.save
+      flash[:notice] = '登録完了しました'
       redirect_to codes_path
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
