@@ -14,12 +14,12 @@ RSpec.describe 'Codes', type: :system do
         visit new_user_session_path
         fill_in 'user[email]', with: user.email
         fill_in 'user[password]', with: user.password
-        click_button 'ログイン'
+        click_button I18n.t('header.login')
         visit new_code_path
         fill_in 'code[title]', with: 'Title'
         fill_in 'code[body_html]', with: 'BodyHtml'
         click_on 'save'
-        expect(page).to have_content '登録完了しました'
+        expect(page).to have_content I18n.t('flash.code.create')
         expect(Code.last.title).to eq('Title')
         expect(Code.last.body_html).to eq('BodyHtml')
       end
