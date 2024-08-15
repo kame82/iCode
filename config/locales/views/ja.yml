@@ -8,6 +8,11 @@ ja:
     contact: お問い合わせ
     terms: 利用規約
     privacy: プライバシーポリシー
+  flash:
+    code:
+      create: 投稿しました
+      update: 更新しました
+      destroy: 削除しました
   session_page:
     Login: ログイン
     Login by Google: Googleでログイン

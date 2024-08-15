@@ -2,7 +2,7 @@
   <div class="px-10 py-5 flex justify-between">
     <h1><%=link_to "iCode", root_path, class: "text-4xl font-bold" %></h1>
     <div class="flex gap-x-7 items-center">
-      <a href="#" class="link link-hover">コード一覧</a>
+      <a href="#" class="link link-hover"><%= t('header.code_index') %></a>
       <% if user_signed_in? %>
         <%= link_to t('header.logout'), destroy_user_session_path, data: {turbo_method: :delete}, class: "link link-hover" %>
       <% else %>
