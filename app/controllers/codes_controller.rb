@@ -1,9 +1,14 @@
 class CodesController < ApplicationController
   def index
+    @codes = Code.eager_load(:user).order(created_at: :desc)
   end
 
   def new
     @code = Code.new
+  end
+
+  def edit
+    @code = Code.find(params[:id])
   end
 
   def create

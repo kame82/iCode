@@ -1,0 +1,14 @@
+<%= form_with model: model do |form| %>
+  <%= label_tag :title %>
+  <%= form.text_field :title %>
+  <p>Created by Username</p>
+  <div class="flex justify-between">
+    <input type="text" placeholder="Search tag" /> <%# ここにタグ検索機能を実装 %>
+    <div>
+      <%= form.submit "save", class: "link link-primary", data: { turbo: false } %>
+      <%= form.submit "delete", class: "link link-primary" %>
+    </div>
+  </div>
+  <%= form.text_area :body_html, id: "editorSource_HTML" %>
+  <div id="editor_HTML"></div>
+<% end %>
