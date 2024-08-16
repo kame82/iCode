@@ -3,6 +3,8 @@ class CodesController < ApplicationController
     @codes = Code.eager_load(:user).order(created_at: :desc)
   end
 
+  def show; end
+
   def new
     @code = Code.new
   end
