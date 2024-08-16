@@ -6,7 +6,9 @@
     <input type="text" placeholder="Search tag" /> <%# ここにタグ検索機能を実装 %>
     <div>
       <%= form.submit "save", class: "link link-primary", data: { turbo: false } %>
-      <%= form.submit "delete", class: "link link-primary" %>
+      <% if controller.action_name != "new" %>
+        <%= link_to "delete", code_path(model), class: "link link-primary", data: { turbo_method: :delete, turbo_confirm: t('message.confirm_delete')} %>
+      <% end%>
     </div>
   </div>
   <%= form.text_area :body_html, id: "editorSource_HTML" %>
