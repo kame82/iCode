@@ -13,6 +13,8 @@ ja:
       create: 投稿しました
       update: 更新しました
       destroy: 削除しました
+  title:
+    code_index: コード一覧
   session_page:
     Login: ログイン
     Login by Google: Googleでログイン
@@ -20,3 +22,5 @@ ja:
     Sign up: 新規登録
     Sing up by Google: Googleで登録
     Sing up by Github: GitHubで登録
+  message:
+    confirm_delete: 本当に削除しますか？

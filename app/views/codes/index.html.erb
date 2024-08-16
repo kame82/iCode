@@ -1,1 +1,9 @@
-<p>index</p>
+<h2><%= t('title.code_index') %></h2>
+<% @codes.each do |code| %>
+  <%= link_to edit_code_path(code), data: { turbo:false } do %>
+    <div class="bg-gray-600 m-4">
+    <%= code.title %>
+    <%= code.user.name%>
+    <% end %>
+    </div>
+  <% end %>
