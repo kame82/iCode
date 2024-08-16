@@ -22,6 +22,15 @@ class CodesController < ApplicationController
     end
   end
 
+  def update
+    @code = Code.find(params[:id])
+    if @code.update(code_params)
+      redirect_to codes_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def code_params
