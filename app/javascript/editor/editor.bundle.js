@@ -28828,7 +28828,16 @@
        return true;
    });
 
-   // ------------------------------------------------
+   document.addEventListener("DOMContentLoaded", function () {
+     // iframeの要素を取得
+     const live_frame = document.getElementById("live_frame");
+
+     // エディタの内容をiframeに反映
+     window.update_live_frame = function () {
+       live_frame.contentWindow.document.body.innerHTML =
+         document.getElementById("editorSource_HTML").value;
+     };
+   });
 
    const load_editor_HTML = function () {
      // テーマの定義
@@ -28882,6 +28891,7 @@
      const Editor_updateListener = EditorView.updateListener.of(function (e) {
        if (e.docChanged) {
          submitTextarea();
+         update_live_frame();
        }
      });
 
@@ -28914,8 +28924,8 @@
      }
 
      // エディタ(textarea)の非表示
-     // const editorSource_HTML = document.querySelector("#editorSource_HTML");
-     // editorSource_HTML.setAttribute("hidden", "true");
+     const editorSource_HTML = document.querySelector("#editorSource_HTML");
+     editorSource_HTML.setAttribute("hidden", "true");
 
      // エディタの初期内容を設定
      editor_HTML.dispatch({
