@@ -44,6 +44,6 @@ class CodesController < ApplicationController
   private
 
   def code_params
-    params.require(:code).permit(:title, :body_html, :body_css, :body_js, :is_public)
+    params.require(:code).permit(:title, :body_html, :body_css, :body_js, :is_public, :image)
   end
 end

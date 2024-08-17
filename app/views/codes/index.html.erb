@@ -2,6 +2,9 @@
 <% @codes.each do |code| %>
   <%= link_to edit_code_path(code), data: { turbo:false } do %>
     <div class="bg-gray-600 m-4">
+    <% if code.image.present? %>
+      <%= image_tag code.image.url %>
+    <% end %>
     <%= code.title %>
     <%= code.user.name%>
     <% end %>
