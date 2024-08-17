@@ -1,3 +1,4 @@
+
 <%= form_with model: model do |form| %>
   <%= label_tag :title %>
   <%= form.text_field :title %>
@@ -12,5 +13,8 @@
     </div>
   </div>
   <%= form.text_area :body_html, id: "editorSource_HTML" %>
-  <div id="editor_HTML"></div>
 <% end %>
+<div class="flex">
+  <div id="editor_HTML" class="flex-1"></div>
+  <iframe id="live_frame" class="flex-1 bg-gray-100"></iframe>
+</div>

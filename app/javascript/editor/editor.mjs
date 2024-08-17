@@ -11,6 +11,9 @@ import { indentWithTab } from "@codemirror/commands";
 import { javascript } from "@codemirror/lang-javascript";
 // ------------------------------------------------
 
+// live_frameの要素を取得
+import "./live_frame.js";
+
 const load_editor_HTML = function () {
   // テーマの定義
   let myTheme = EditorView.theme(
@@ -63,6 +66,7 @@ const load_editor_HTML = function () {
   const Editor_updateListener = EditorView.updateListener.of(function (e) {
     if (e.docChanged) {
       submitTextarea();
+      update_live_frame();
     }
   });
 
@@ -95,8 +99,8 @@ const load_editor_HTML = function () {
   }
 
   // エディタ(textarea)の非表示
-  // const editorSource_HTML = document.querySelector("#editorSource_HTML");
-  // editorSource_HTML.setAttribute("hidden", "true");
+  const editorSource_HTML = document.querySelector("#editorSource_HTML");
+  editorSource_HTML.setAttribute("hidden", "true");
 
   // エディタの初期内容を設定
   editor_HTML.dispatch({
