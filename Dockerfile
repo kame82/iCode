@@ -21,6 +21,9 @@ FROM base as build
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential curl git libpq-dev libvips node-gyp pkg-config python-is-python3 imagemagick
 
+# Install bundler
+RUN apt-get update && apt-get install -y imagemagick libmagickwand-dev
+
 # Install JavaScript dependencies
 ARG NODE_VERSION=22.5.1
 ARG YARN_VERSION=1.22.22
