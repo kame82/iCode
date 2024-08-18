@@ -22,6 +22,6 @@ CarrierWave.configure do |config|
     }
   else # 本番環境以外の場合はアプリケーション内にアップロード
     config.storage :file
-    # config.enable_processing = false if Rails.env.test? || Rails.env.ci?
+    config.enable_processing = false if Rails.env.test? || Rails.env.ci?
   end
 end
