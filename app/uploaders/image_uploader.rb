@@ -22,7 +22,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Process files as they are uploaded:
-  # process resize_to_fill: [400, 300]
+  process resize_to_fill: [300, 200]
   #
   # def scale(width, height)
   #   # do something
@@ -46,7 +46,9 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   if Rails.env.development? # 開発環境の場合
-    storage :file
+    # storage :file
+    storage :fog
+
   elsif Rails.env.test? # テスト環境の場合
     storage :file
   else # 本番環境の場合
