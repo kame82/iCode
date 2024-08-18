@@ -104,3 +104,7 @@ gem 'omniauth-rails_csrf_protection'
 gem 'carrierwave'
 # gem 'mini_magick'
 gem 'rmagick'
+
+# Image upload to AWS S3
+gem 'dotenv-rails'
+gem 'fog-aws'
