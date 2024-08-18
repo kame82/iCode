@@ -25,7 +25,7 @@ require 'carrierwave/storage/fog'
 #   end
 # end
 CarrierWave.configure do |config|
-  config.storage :file # デフォルトはファイルストレージ
+  config.storage :fog # デフォルトはファイルストレージ
   if ENV['S3_ACCESS_KEY_ID'] && ENV['S3_SECRET_ACCESS_KEY']
     config.storage :fog
     config.fog_provider = 'fog/aws'
