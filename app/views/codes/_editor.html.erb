@@ -5,6 +5,7 @@
   <p>Created by Username</p>
   <div class="flex justify-between">
     <input type="text" placeholder="Search tag" /> <%# ここにタグ検索機能を実装 %>
+    <%= form.file_field :image %>
     <div>
       <%= form.submit "save", class: "link link-primary", data: { turbo: false } %>
       <% if controller.action_name == "edit" %>
