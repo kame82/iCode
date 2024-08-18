@@ -3,7 +3,7 @@ require 'carrierwave/storage/file'
 require 'carrierwave/storage/fog'
 
 CarrierWave.configure do |config|
-  if Rails.env.production? && !ENV["AWS_ACCESS_KEY_ID"].nil?  # 本番環境の場合はS3へアップロード
+  if Rails.env.production? && !ENV["aws_access_key_id"].nil?  # 本番環境の場合はS3へアップロード
     config.storage :fog
     config.fog_provider = 'fog/aws'
     config.fog_directory  = 'myicode' # バケット名
