@@ -102,3 +102,5 @@ gem 'omniauth-rails_csrf_protection'
 
 # Image upload
 gem 'carrierwave'
+# gem 'mini_magick'
+gem 'rmagick'
