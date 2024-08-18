@@ -1,7 +1,7 @@
 class CodesController < ApplicationController
   def index
     @codes = Code.eager_load(:user).order(created_at: :desc)
-    # logger.info "S3_ACCESS_KEY_ID: #{ENV['S3_ACCESS_KEY_ID']}"
+    logger.info "S3_ACCESS_KEY_ID: #{ENV['S3_ACCESS_KEY_ID']}"
   end
 
   def show; end
