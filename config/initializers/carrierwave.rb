@@ -3,7 +3,7 @@ require 'carrierwave/storage/file'
 require 'carrierwave/storage/fog'
 
 CarrierWave.configure do |config|
-  if Rails.env.production? && !ENV["AWS_ACCESS_KEY_ID"].nil?  # 本番環境の場合はS3へアップロード
+  # if Rails.env.production? && !ENV["AWS_ACCESS_KEY_ID"].nil?  # 本番環境の場合はS3へアップロード
     Rails.logger.info "Using AWS S3 for storage"
 
     config.storage :fog
@@ -19,8 +19,8 @@ CarrierWave.configure do |config|
       region: 'ap-northeast-1', # リージョン
       path_style: true
     }
-  else # 本番環境以外の場合はアプリケーション内にアップロード
-    config.storage :file
-    config.enable_processing = false if Rails.env.test? || Rails.env.ci?
-  end
+  # else # 本番環境以外の場合はアプリケーション内にアップロード
+  #   config.storage :file
+  #   config.enable_processing = false if Rails.env.test? || Rails.env.ci?
+  # end
 end
