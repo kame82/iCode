@@ -43,28 +43,9 @@ require 'carrierwave/storage/fog'
 #   # end
 #     config.enable_processing = false if Rails.env.test? || Rails.env.ci?
 # end
-# CarrierWave.configure do |config|
-#   # if Rails.env.production? && ENV['S3_ACCESS_KEY_ID'].present? && ENV['S3_SECRET_ACCESS_KEY'].present?
-#     config.storage :fog
-#     config.fog_provider = 'fog/aws'
-#     config.fog_directory = 'myicode'
-#     config.fog_public = false
-#     config.asset_host = "https://s3.ap-northeast-1.amazonaws.com/myicode"
-#     config.fog_credentials = {
-#       provider: 'AWS',
-#       aws_access_key_id: ENV['S3_ACCESS_KEY_ID'],
-#       aws_secret_access_key: ENV['S3_SECRET_ACCESS_KEY'],
-#       region: 'ap-northeast-1',
-#       path_style: true
-#     }
-#   # else
-#   #   config.storage :file
-#   # end
-#   # config.enable_processing = false if Rails.env.test? || Rails.env.ci?
-# end
 CarrierWave.configure do |config|
-  unless ENV['RAILS_ENV'] == 'assets'
-    config.storage = :fog
+  # if Rails.env.production? && ENV['S3_ACCESS_KEY_ID'].present? && ENV['S3_SECRET_ACCESS_KEY'].present?
+    config.storage :fog
     config.fog_provider = 'fog/aws'
     config.fog_directory = 'myicode'
     config.fog_public = false
@@ -76,5 +57,8 @@ CarrierWave.configure do |config|
       region: 'ap-northeast-1',
       path_style: true
     }
-  end
+  # else
+  #   config.storage :file
+  # end
+  # config.enable_processing = false if Rails.env.test? || Rails.env.ci?
 end
