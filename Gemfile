@@ -108,5 +108,5 @@ gem 'rmagick'
 # Image upload to AWS S3
 gem 'dotenv-rails'
 gem 'fog-aws'
-# gem "aws-sdk-s3", require: false
+gem "aws-sdk-s3", require: false
 # gem 'carrierwave-aws'
