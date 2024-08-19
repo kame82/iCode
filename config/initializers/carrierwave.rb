@@ -43,7 +43,6 @@ require 'carrierwave/storage/fog'
 #   # end
 #     config.enable_processing = false if Rails.env.test? || Rails.env.ci?
 # end
-unless Rails.env.development? || Rails.env.test?
 CarrierWave.configure do |config|
   # if Rails.env.production? && ENV['S3_ACCESS_KEY_ID'].present? && ENV['S3_SECRET_ACCESS_KEY'].present?
     config.storage :fog
@@ -62,5 +61,4 @@ CarrierWave.configure do |config|
   #   config.storage :file
   # end
   # config.enable_processing = false if Rails.env.test? || Rails.env.ci?
-  end
 end
