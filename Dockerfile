@@ -53,6 +53,11 @@ RUN bundle exec bootsnap precompile app/ lib/
 # RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 ARG AWS_ACCESS_KEY_ID
 ARG AWS_SECRET_ACCESS_KEY
+
+# 上記のARGを使って環境変数を設定
+ENV AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+ENV AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+
 RUN SECRET_KEY_BASE_DUMMY=1 AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} ./bin/rails assets:precompile
 
 # Final stage for app image
