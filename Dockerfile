@@ -50,8 +50,10 @@ COPY . .
 RUN bundle exec bootsnap precompile app/ lib/
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
-
+# RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
+ARG AWS_ACCESS_KEY_ID
+ARG AWS_SECRET_ACCESS_KEY
+RUN SECRET_KEY_BASE_DUMMY=1 AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} ./bin/rails assets:precompile
 
 # Final stage for app image
 FROM base
