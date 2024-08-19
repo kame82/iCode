@@ -53,7 +53,7 @@ RUN bundle exec bootsnap precompile app/ lib/
 # RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 RUN SECRET_KEY_BASE_DUMMY=1 S3_ACCESS_KEY_ID=${S3_ACCESS_KEY_ID} S3_SECRET_ACCESS_KEY=${S3_SECRET_ACCESS_KEY} ./bin/rails assets:precompile
 # Set RAILS_ENV to assets temporarily
-RUN SECRET_KEY_BASE_DUMMY=1 RAILS_ENV=assets ./bin/rails assets:precompile
+RUN SECRET_KEY_BASE_DUMMY=1 RAILS_ENV=production ./bin/rails assets:precompile
 
 # Final stage for app image
 FROM base
