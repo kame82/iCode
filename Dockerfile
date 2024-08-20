@@ -68,7 +68,7 @@ COPY --from=build /rails /rails
 # Run and own only the runtime files as a non-root user for security
 RUN useradd rails --create-home --shell /bin/bash && \
     chown -R rails:rails db log storage tmp
-#追記
+# Add S3 uploads permissions
 RUN mkdir -p /rails/public/uploads/tmp && chown -R rails:rails /rails/public/uploads
 USER rails:rails
 
