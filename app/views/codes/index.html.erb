@@ -1,12 +1,73 @@
-<h2><%= t('title.code_index') %></h2>
-<% @codes.each do |code| %>
-  <%= link_to edit_code_path(code), data: { turbo:false } do %>
-    <div class="bg-gray-600 m-4">
-    <% if code.image.present? %>
-      <%= image_tag code.image.url %>
-    <% end %>
-    <%= code.title %>
-    <%= code.user.name%>
-    <% end %>
+<div class="container py-20 mx-10 mx-auto">
+  <h2 class="text-left text-3xl ml-6 font-bold"><%= t('title.code_index') %></h2>
+  <div class="py-4 bg-gray-950 rounded mt-11">
+    <div class="mx-4 flex justify-between">
+      <div class="flex gap-2">
+        <label class="input input-bordered flex items-center gap-2 max-w-60 h-10">
+          <input type="text" class="grow" placeholder="Search" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            class="h-5 w-5 text-black">
+            <path
+              fill-rule="evenodd"
+              d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+              clip-rule="evenodd" />
+          </svg>
+        </label>
+
+        <%# <label class="input input-bordered flex items-center gap-2 h-10">
+          <svg width="17" height="16" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path id="Vector" d="M0.972656 9.84836V1.875C0.972656 0.839453 1.81211 0 2.84766 0H10.821C11.3183 2.6003e-06 11.7952 0.197548 12.1468 0.54918L20.4235 8.82582C21.1557 9.55805 21.1557 10.7452 20.4235 11.4775L12.4501 19.4508C11.7179 20.183 10.5307 20.183 9.79848 19.4508L1.52184 11.1742C1.1702 10.8226 0.972659 10.3456 0.972656 9.84836ZM5.34766 2.5C4.31211 2.5 3.47266 3.33945 3.47266 4.375C3.47266 5.41055 4.31211 6.25 5.34766 6.25C6.3832 6.25 7.22266 5.41055 7.22266 4.375C7.22266 3.33945 6.3832 2.5 5.34766 2.5Z" fill="#333333"/>
+          </svg>
+          <input type="text" class="max-w-24" placeholder="Search" />
+        </label> %>
+      </div>
+      <div class="flex gap-2">
+        <%= link_to new_code_path, class: "btn bg-white rounded-lg flex items-center justify-center h-6 min-h-10" do %>
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="currentColor" class="text-black w-5 h-10">
+            <path d="M21.875 10.1562H14.8438V3.125C14.8438 2.26221 14.144 1.5625 13.2812 1.5625H11.7188C10.856 1.5625 10.1562 2.26221 10.1562 3.125V10.1562H3.125C2.26221 10.1562 1.5625 10.856 1.5625 11.7188V13.2812C1.5625 14.144 2.26221 14.8438 3.125 14.8438H10.1562V21.875C10.1562 22.7378 10.856 23.4375 11.7188 23.4375H13.2812C14.144 23.4375 14.8438 22.7378 14.8438 21.875V14.8438H21.875C22.7378 14.8438 23.4375 14.144 23.4375 13.2812V11.7188C23.4375 10.856 22.7378 10.1562 21.875 10.1562Z" fill="#333333"/>
+          </svg>
+          <p class="text-base">New</p>
+        <% end %>
+        <div class="flex gap-0.5">
+          <a href="#" class="btn bg-white rounded-r-none flex items-center justify-center px-0 h-6 min-h-10">
+            <svg xmlns="http://www.w3.org/2000/svg" width="27" height="25" viewBox="0 0 27 25" fill="currentColor" class="text-black w-10 h-5">
+              <path d="M4.0821 14.1357L2.96842 13.0518C2.49686 12.5928 2.49686 11.8506 2.96842 11.3965L12.7156 1.9043C13.1872 1.44531 13.9497 1.44531 14.4163 1.9043L24.1635 11.3916C24.6351 11.8506 24.6351 12.5928 24.1635 13.0469L23.0498 14.1309C22.5732 14.5947 21.7957 14.585 21.3291 14.1113L15.5751 8.23242V22.2656C15.5751 22.915 15.0383 23.4375 14.3711 23.4375H12.7658C12.0986 23.4375 11.5618 22.915 11.5618 22.2656V8.23242L5.80279 14.1162C5.33624 14.5947 4.55867 14.6045 4.0821 14.1357Z" fill="#333333"/>
+            </svg>
+          </a>
+          <a href="#" class="btn bg-white rounded-l-none flex items-center justify-center px-0 h-6 min-h-10">
+            <svg xmlns="http://www.w3.org/2000/svg" width="27" height="25" viewBox="0 0 27 25" fill="currentColor" class="text-black w-10 h-5">
+                <path d="M20.6574 10.8643L21.7711 11.9482C22.2426 12.4072 22.2426 13.1494 21.7711 13.6035L12.0238 23.0957C11.5523 23.5547 10.7897 23.5547 10.3232 23.0957L0.570955 13.6035C0.0993953 13.1445 0.0993953 12.4023 0.570955 11.9482L1.68464 10.8643C2.16121 10.4004 2.93878 10.4102 3.40533 10.8838L9.16437 16.7676V2.73438C9.16437 2.08496 9.70115 1.5625 10.3684 1.5625H11.9737C12.6409 1.5625 13.1776 2.08496 13.1776 2.73438V16.7676L18.9367 10.8838C19.4032 10.4053 20.1808 10.3955 20.6574 10.8643Z" fill="#333333"/>
+            </svg>
+          </a>
+        </div>
+      </div>
     </div>
+  </div>
+
+  <div class="grid grid-flow-col auto-cols-max gap-4 pt-4 mx-2">
+  <% @codes.each do |code| %>
+    <%= link_to edit_code_path(code), data: { turbo:false }, class:"card bg-base-100 w-60 shadow-xl" do %>
+      <figure>
+          <% if code.image.present? %>
+            <%= image_tag code.image.url , class:"max-h-30" %>
+          <% else %>
+            <%= image_tag "nodata" %>
+          <% end %>
+      </figure>
+      <div class="card-body p-4 gap-0">
+        <h2 class="card-title">
+          <%= code.title %>
+        </h2>
+        <p>Created by <span class="underline"><%= code.user.name%></span></p>
+        <div class="card-actions justify-start mt-2">
+          <div class="badge badge-secondary">Fashion</div>
+          <div class="badge badge-primary">Products</div>
+        </div>
+      </div>
+    <% end %>
   <% end %>
+  </div>
+</div>
