@@ -6,6 +6,14 @@ module.exports = {
     "./app/javascript/**/*.js",
   ],
   plugins: [require("daisyui")],
+  theme: {
+    extend: {
+      colors: {
+        customGray: "#333333",
+        backgroundGray: "#F6F6F6",
+      },
+    },
+  },
   // daisyUI config (optional - here are the default values)
   daisyui: {
     themes: ["light", "dark"], // false: only light + dark | true: all themes | array: specific themes like this ["light", "dark", "cupcake"]
