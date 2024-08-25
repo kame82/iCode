@@ -47,12 +47,12 @@
     </div>
   </div>
 
-  <div class="grid grid-flow-col auto-cols-max gap-4 pt-4 mx-2">
+  <div class="grid autoFill gap-4 pt-4 mx-2">
   <% @codes.each do |code| %>
-    <%= link_to edit_code_path(code), data: { turbo:false }, class:"card bg-base-100 w-60 shadow-xl" do %>
+    <%= link_to edit_code_path(code), data: { turbo:false }, class:"card bg-base-100 shadow-xl" do %>
       <figure>
           <% if code.image.present? %>
-            <%= image_tag code.image.url , class:"max-h-30" %>
+            <%= image_tag code.image.url , class:"object-cover w-full" %>
           <% else %>
             <%= image_tag "nodata" %>
           <% end %>
