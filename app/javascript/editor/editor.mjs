@@ -15,6 +15,11 @@ import { javascript } from "@codemirror/lang-javascript";
 import "./live_frame.js";
 
 const load_editor_HTML = function () {
+  // editorSource_HTMLの有無を確認
+  const editorSource_HTML = document.querySelector("#editorSource_HTML");
+  if (!editorSource_HTML) {
+    return; // 要素が存在しない場合、処理を中断
+  }
   // テーマの定義
   let myTheme = EditorView.theme(
     {
@@ -99,7 +104,6 @@ const load_editor_HTML = function () {
   }
 
   // エディタ(textarea)の非表示
-  const editorSource_HTML = document.querySelector("#editorSource_HTML");
   editorSource_HTML.setAttribute("hidden", "true");
 
   // エディタの初期内容を設定
