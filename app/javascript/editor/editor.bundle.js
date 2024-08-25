@@ -28828,18 +28828,23 @@
        return true;
    });
 
-   document.addEventListener("DOMContentLoaded", function () {
-     // iframeの要素を取得
+   // グローバルに関数を定義
+   window.update_live_frame = function () {
      const live_frame = document.getElementById("live_frame");
+     const html_editor_value = document.getElementById("editorSource_HTML").value;
 
-     // エディタの内容をiframeに反映
-     window.update_live_frame = function () {
-       live_frame.contentWindow.document.body.innerHTML =
-         document.getElementById("editorSource_HTML").value;
-     };
+     if (live_frame && live_frame.contentWindow && live_frame.contentWindow.document) {
+       live_frame.contentWindow.document.body.innerHTML = html_editor_value;
+     }
+   };
+
+   document.addEventListener("DOMContentLoaded", function () {
+     // 初回ロード時にエディタの内容をiframeに反映
+     update_live_frame();
    });
 
    const load_editor_HTML = function () {
+     // editorSource_HTMLの有無を確認
      const editorSource_HTML = document.querySelector("#editorSource_HTML");
      if (!editorSource_HTML) {
        return; // 要素が存在しない場合、処理を中断
