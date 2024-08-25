@@ -4,7 +4,14 @@
     <div class="flex gap-x-7 items-center">
       <%= link_to t('header.code_index'), codes_path, class: "link link-hover" %>
       <% if user_signed_in? %>
-        <%= link_to t('header.logout'), destroy_user_session_path, data: {turbo_method: :delete}, class: "link link-hover" %>
+        <div class="dropdown dropdown-bottom dropdown-end">
+          <div tabindex="0" class="cursor-pointer link-hover">
+            <%= "ログイン中: #{current_user.name}" %>
+          </div>
+          <ul tabindex="0" class="dropdown-content menu bg-gray-950 rounded-box z-[1] w-36 p-2 shadow border-white border-solid border-2 mt-2">
+            <li><%= link_to t('header.logout'), destroy_user_session_path, data: {turbo_method: :delete}, class: "link link-hover" %></li>
+          </ul>
+        </div>
       <% else %>
         <%= link_to t('header.login'), new_user_session_path ,class: "link link-hover" %>
         <%= link_to t('header.signup'), new_user_registration_path, class: "link link-hover" %>
