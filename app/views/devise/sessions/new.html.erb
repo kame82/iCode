@@ -1,6 +1,6 @@
 <div class="container py-20 mx-auto">
   <div class="bg-backgroundGray rounded-xl shadow_custom max-w-lg mx-auto">
-      <h2 class="text-center text-3xl pt-7 font-bold"><%= t('session_page.Login')%></h2>
+    <h2 class="text-center text-3xl pt-7 font-bold"><%= t('session_page.Login')%></h2>
     <div class="flex pt-16 pb-10 justify-center">
       <%= form_for(resource, as: resource_name, html:{class: ""}, url: session_path(resource_name)) do |f| %>
       <%# <%= form_for(resource, as: resource_name, html:{class: "w-1/2"}, url: session_path(resource_name)) do |f| %>
