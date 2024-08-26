@@ -6,4 +6,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[github google_oauth2]
 
   has_many :codes, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 end
