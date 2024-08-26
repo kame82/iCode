@@ -2,6 +2,7 @@ class Code < ApplicationRecord
   validates :title, presence: true, length: { maximum: 20 }
 
   belongs_to :user
+  has_many :favorites, dependent: :destroy
   mount_uploader :image, ImageUploader
   before_destroy :remove_image
 
