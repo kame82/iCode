@@ -11,6 +11,7 @@ class CodesController < ApplicationController
 
   def edit
     @code = Code.find(params[:id])
+    @favorite = current_user.favorites.find_by(code_id: @code.id)
   end
 
   def create
