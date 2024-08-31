@@ -35,7 +35,7 @@
 
         <% if devise_mapping.rememberable? %>
           <div class="field block mx-auto text-start  ml-3 mt-2">
-            <%= f.check_box :remember_me ,class:"toggle toggle-sm toggle-success align-sub" %>
+            <%= f.check_box :remember_me ,class:"toggle toggle-sm toggle-success align-sub", checked: true %>
             <%= f.label :remember_me, class:"ml-1" %>
           </div>
         <% end %>
