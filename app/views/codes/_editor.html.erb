@@ -1,5 +1,6 @@
 <%= form_with model: model do |form| %>
   <div class="flex items-bottom items-baseline">
+  <%# // タイトルの編集 %>
   <h2 id="code_title" class="mt-10 text-4xl pr-4"><%= @code.title %></h2>
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 25 25" fill="currentColor" id="code_title_edit" class="opacity-70 text-black cursor-pointer  hover:opacity-50">
       <g clip-path="url(#clip0_373_2)">
@@ -11,6 +12,7 @@
   <% if controller.action_name != "new" %>
     <p class="pt-1">Created by <span class="underline"><%= @code.user.name %></span></p>
   <% end %>
+  <%# // タグの登録 %>
   <div class="flex justify-between pt-7">
     <label class="input input-bordered border-black flex items-center gap-2 h-10 min-h-10">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -20,28 +22,41 @@
       </svg>
     <input type="text" class="grow" placeholder="Search tag" />
     </label>
-
+    <%# // 画像のアップロード %>
     <%= form.file_field :image %>
     <div class="flex gap-2">
+       <%# //保存ボタン %>
       <%= form.button type: "submit", class: "btn h-10 min-h-10 flex btn-neutral hover:opacity-70", data: { turbo: false } do %>
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 23 23" fill="white">
           <path d="M21.751 5.34478L17.6552 1.24897C17.2157 0.809435 16.6195 0.562503 15.9979 0.5625H2.90625C1.61182 0.5625 0.5625 1.61182 0.5625 2.90625V20.0938C0.5625 21.3882 1.61182 22.4375 2.90625 22.4375H20.0938C21.3882 22.4375 22.4375 21.3882 22.4375 20.0938V7.00205C22.4375 6.38045 22.1906 5.78431 21.751 5.34478ZM11.5 19.3125C9.77412 19.3125 8.375 17.9134 8.375 16.1875C8.375 14.4616 9.77412 13.0625 11.5 13.0625C13.2259 13.0625 14.625 14.4616 14.625 16.1875C14.625 17.9134 13.2259 19.3125 11.5 19.3125ZM16.1875 4.44336V9.35156C16.1875 9.67515 15.9251 9.9375 15.6016 9.9375H4.27344C3.94985 9.9375 3.6875 9.67515 3.6875 9.35156V4.27344C3.6875 3.94985 3.94985 3.6875 4.27344 3.6875H15.4316C15.5871 3.6875 15.7361 3.74922 15.8459 3.85913L16.0159 4.02905C16.0703 4.08345 16.1135 4.14804 16.1429 4.21913C16.1724 4.29022 16.1875 4.36641 16.1875 4.44336Z"/>
         </svg>
         <p class="text-lg">Save</p>
       <% end %>
-      <%= link_to "#",class:"btn h-10 min-h-10 flex bg-gray-200 px-3" do %>
+      <%# // お気に入りボタン %>
+      <%= link_to code_favorite_path(model), class:"btn h-10 min-h-10 flex bg-gray-200 px-3", data: { turbo_method: :post} do %>
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 25 25" fill="#333333">
         <g clip-path="url(#clip0_88_301)">
-          <path d="M22.5738 3.49576C19.8981 1.21549 15.9186 1.62564 13.4625 4.15982L12.5006 5.15104L11.5387 4.15982C9.08751 1.62564 5.10314 1.21549 2.42736 3.49576C-0.639049 6.11295 -0.800182 10.8102 1.94396 13.6471L11.3922 23.403C12.0026 24.0329 12.9938 24.0329 13.6041 23.403L23.0524 13.6471C25.8014 10.8102 25.6402 6.11295 22.5738 3.49576Z" fill="#333333"/>
+          <path d="M22.5738 3.49576C19.8981 1.21549 15.9186 1.62564 13.4625 4.15982L12.5006 5.15104L11.5387 4.15982C9.08751 1.62564 5.10314 1.21549 2.42736 3.49576C-0.639049 6.11295 -0.800182 10.8102 1.94396 13.6471L11.3922 23.403C12.0026 24.0329 12.9938 24.0329 13.6041 23.403L23.0524 13.6471C25.8014 10.8102 25.6402 6.11295 22.5738 3.49576Z"/>
         </g>
       </svg>
       <% end %>
+
+      <%# // お気に入り削除ボタン %>
+      <%= link_to code_favorite_path(model), class:"btn h-10 min-h-10 flex bg-gray-200 px-3", data: { turbo_method: :delete} do %>
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 25 25" fill="#F4858A">
+        <g clip-path="url(#clip0_88_301)">
+          <path d="M22.5738 3.49576C19.8981 1.21549 15.9186 1.62564 13.4625 4.15982L12.5006 5.15104L11.5387 4.15982C9.08751 1.62564 5.10314 1.21549 2.42736 3.49576C-0.639049 6.11295 -0.800182 10.8102 1.94396 13.6471L11.3922 23.403C12.0026 24.0329 12.9938 24.0329 13.6041 23.403L23.0524 13.6471C25.8014 10.8102 25.6402 6.11295 22.5738 3.49576Z"/>
+        </g>
+      </svg>
+      <% end %>
+      <%# // プライベートボタン %>
       <%= link_to "#", class:"btn h-10 min-h-10 flex bg-gray-200 px-3" do %>
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 25 25" fill="#333333">
           <path d="M21.0938 10.9375H19.9219V7.42188C19.9219 3.33008 16.5918 0 12.5 0C8.4082 0 5.07812 3.33008 5.07812 7.42188V10.9375H3.90625C2.6123 10.9375 1.5625 11.9873 1.5625 13.2812V22.6562C1.5625 23.9502 2.6123 25 3.90625 25H21.0938C22.3877 25 23.4375 23.9502 23.4375 22.6562V13.2812C23.4375 11.9873 22.3877 10.9375 21.0938 10.9375ZM16.0156 10.9375H8.98438V7.42188C8.98438 5.4834 10.5615 3.90625 12.5 3.90625C14.4385 3.90625 16.0156 5.4834 16.0156 7.42188V10.9375Z"/>
         </svg>
       <% end %>
       <% if controller.action_name == "edit" %>
+        <%# // 削除ボタン %>
         <%= link_to code_path(model), class: "btn btn-error h-10 min-h-10 hover:opacity-70 px-3", data: { turbo_method: :delete, turbo_confirm: t('message.confirm_delete')} do%>
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 25 25" fill="#333333">
             <g clip-path="url(#clip0_88_305)">
@@ -52,11 +67,13 @@
       <% end %>
     </div>
   </div>
+  <%# // HTMLエディタ %>
   <div>
     <%= form.text_area :body_html, id: "editorSource_HTML" %>
   </div>
 <% end %>
 <div class="flex my-4">
+  <%# // タブの切り替え %>
   <div role="tablist" class="tabs tabs-lifted flex-1 grid grid-cols-[auto_1fr_auto] place-content-start">
     <input
       type="radio"
