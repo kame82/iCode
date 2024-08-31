@@ -25,3 +25,7 @@ header {
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 24px;
 }
+
+.csustom-tag-width {
+  width: 6rem !important;
+}
