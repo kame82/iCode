@@ -25,7 +25,7 @@ const load_editor_HTML = function () {
     {
       "&": {
         color: "white",
-        backgroundColor: "#034",
+        backgroundColor: "#333333",
       },
       ".cm-content": {
         caretColor: "#0e9",
@@ -37,7 +37,7 @@ const load_editor_HTML = function () {
         backgroundColor: "#074",
       },
       ".cm-gutters": {
-        backgroundColor: "#045",
+        backgroundColor: "#333333",
         color: "#ddd",
         border: "none",
       },
@@ -47,7 +47,7 @@ const load_editor_HTML = function () {
 
   // エディタの高さの固定
   const fixedHeightEditor = EditorView.theme({
-    "&": { height: "300px" },
+    "&": { height: "50vh" },
     ".cm-scroller": { overflow: "auto" },
   });
 

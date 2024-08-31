@@ -28854,7 +28854,7 @@
        {
          "&": {
            color: "white",
-           backgroundColor: "#034",
+           backgroundColor: "#333333",
          },
          ".cm-content": {
            caretColor: "#0e9",
@@ -28866,7 +28866,7 @@
            backgroundColor: "#074",
          },
          ".cm-gutters": {
-           backgroundColor: "#045",
+           backgroundColor: "#333333",
            color: "#ddd",
            border: "none",
          },
@@ -28876,7 +28876,7 @@
 
      // エディタの高さの固定
      const fixedHeightEditor = EditorView.theme({
-       "&": { height: "300px" },
+       "&": { height: "50vh" },
        ".cm-scroller": { overflow: "auto" },
      });
 
