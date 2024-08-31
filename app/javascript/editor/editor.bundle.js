@@ -28880,6 +28880,11 @@
        ".cm-scroller": { overflow: "auto" },
      });
 
+     // エディタのパディングの固定
+     const fixedPaddingEditor = EditorView.theme({
+       "&": { padding: "5px 0" },
+     });
+
      // シンタックスハイライトのカスタマイズ
      const myHighlightStyle = HighlightStyle.define([
        {
@@ -28913,6 +28918,7 @@
          html(),
          myTheme,
          fixedHeightEditor,
+         fixedPaddingEditor,
          syntaxHighlighting(myHighlightStyle),
          keymap.of([indentWithTab]),
          javascript(),

@@ -5,12 +5,14 @@ import "./controllers";
 import "./editor/editor.bundle.js";
 
 const codeTitle = document.getElementById("code_title");
+const codeTitleEdit = document.getElementById("code_title_edit");
 const codeTitleInput = document.getElementById("code_title_input");
 var defaultValue = codeTitle.textContent;
 
 // タイトルをクリックしたらinputに変更
-codeTitle.addEventListener("click", function () {
+codeTitleEdit.addEventListener("click", function () {
   codeTitle.style.display = "none";
+  codeTitleEdit.style.display = "none";
   codeTitleInput.style.display = "block";
   codeTitleInput.focus();
   defaultValue = codeTitle.textContent;
@@ -27,5 +29,6 @@ codeTitleInput.addEventListener("blur", function () {
     codeTitle.textContent = codeTitleInputValue; // 入力値をタイトルに設定
   }
   codeTitle.style.display = "inline-block";
+  codeTitleEdit.style.display = "inline-block";
   codeTitleInput.style.display = "none";
 });

@@ -51,6 +51,11 @@ const load_editor_HTML = function () {
     ".cm-scroller": { overflow: "auto" },
   });
 
+  // エディタのパディングの固定
+  const fixedPaddingEditor = EditorView.theme({
+    "&": { padding: "5px 0" },
+  });
+
   // シンタックスハイライトのカスタマイズ
   const myHighlightStyle = HighlightStyle.define([
     {
@@ -84,6 +89,7 @@ const load_editor_HTML = function () {
       html(),
       myTheme,
       fixedHeightEditor,
+      fixedPaddingEditor,
       syntaxHighlighting(myHighlightStyle),
       keymap.of([indentWithTab]),
       javascript(),
