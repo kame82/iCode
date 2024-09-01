@@ -6,7 +6,7 @@
       <% if user_signed_in? %>
         <div class="dropdown dropdown-hover dropdown-end">
           <div tabindex="0" class="cursor-pointer link-hover">
-            <%= "ログイン中: #{current_user.name}" %>
+            <%= "ログイン中: #{current_user.name} (##{current_user.id})" %>
           </div>
           <ul tabindex="0" class="dropdown-content menu bg-white rounded-box z-[1] w-36 p-2 shadow border-black text-black border-solid border-2 pt-2">
             <li><%= link_to t('header.logout'), destroy_user_session_path, data: {turbo_method: :delete}, class: "link link-hover" %></li>

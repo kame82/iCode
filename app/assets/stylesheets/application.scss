@@ -62,6 +62,11 @@ header {
   }
 }
 
+.card-img-hover:hover .private-hover {
+  background-color: #f0f5f8;
+  transition: transform 0.2s;
+}
+
 .tooltip-top:before,
 .tooltip:before {
   left: -10%;

@@ -10,7 +10,7 @@
   </div>
   <%= form.text_field :title , id: "code_title_input" ,class: "hidden mt-10 text-4xl",data: {action: "keydown.enter->code-title-edit#noSubmit"} %>
   <% if controller.action_name != "new" %>
-    <p class="pt-1">Created by <span class="underline"><%= @code.user.name %></span></p>
+    <p class="pt-1">Created by <span class="underline"><%= "#{@code.user.name} (##{@code.user_id})" %></span></p>
   <% end %>
   <%# // タグの登録 %>
   <div class="flex justify-between pt-7">
