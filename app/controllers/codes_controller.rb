@@ -25,6 +25,7 @@ class CodesController < ApplicationController
   def create
     @code = Code.new(code_params)
     @code.user = current_user
+
     if @code.save
       flash[:notice] = t('flash.code.create')
       redirect_to codes_path
@@ -53,10 +54,13 @@ class CodesController < ApplicationController
   private
 
   def code_params
+    # is_publicをintegerに変換してparamsにセットする
+    params[:code][:is_public] = params[:code][:is_public].to_i if params[:code][:is_public]
     params.require(:code).permit(:title, :body_html, :body_css, :body_js, :is_public, :image)
   end
 
   def user_owns_code?(code)
     code.user_id == current_user.id
   end
+
 end

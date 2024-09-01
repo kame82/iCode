@@ -61,3 +61,22 @@ header {
     width: 100%;
   }
 }
+
+#private-checkBox:checked ~ .privateOFF {
+  display: none;
+}
+
+#private-checkBox .privateON {
+  display: none;
+}
+.privateON {
+  display: none;
+}
+#private-checkBox:checked ~ .privateON {
+  display: block;
+}
+
+.tooltip-top:before,
+.tooltip:before {
+  left: -10%;
+}
