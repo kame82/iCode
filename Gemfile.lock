@@ -126,6 +126,8 @@ GEM
       dotenv (= 3.1.2)
       railties (>= 6.1)
     drb (2.2.1)
+    enum_help (0.0.19)
+      activesupport (>= 3.0.0)
     erubi (1.13.0)
     excon (0.111.0)
     factory_bot (6.4.6)
@@ -454,6 +456,7 @@ DEPENDENCIES
   devise-i18n
   dockerfile-rails (>= 1.6)
   dotenv-rails
+  enum_help
   factory_bot_rails
   fog-aws
   jbuilder
