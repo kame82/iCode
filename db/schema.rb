@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_30_161848) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_01_132456) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,7 +19,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_30_161848) do
     t.text "body_html"
     t.text "body_css"
     t.text "body_js"
-    t.boolean "is_public", default: true, null: false
+    t.integer "is_public", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
