@@ -214,4 +214,4 @@ MVP リリース項目
 ### ER 図
 
 https://dbdiagram.io/d/i-Code-66a61d2e8b4bb5230e8ba506
-![alt text](<Screenshot 2024-07-28 at 22.24.33.png>)
+![alt text](<Screenshot 2024-09-01 at 22.29.16.png>)

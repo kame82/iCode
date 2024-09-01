@@ -31,15 +31,52 @@ header {
 }
 
 .card-img-hover:hover {
-  &:hover {
-    transform: scale(1.02);
-    background-color: #f0f5f8;
-    transition: transform 0.2s;
-  }
-  transition: all 0.3s ease 0s;
+  transform: scale(1.02);
+  background-color: #f0f5f8;
+  transition: transform 0.2s;
 }
 
 .card-img-hover:hover + .fav-btn-hover {
   background-color: #f0f5f8;
   transition: transform 0.2s;
+}
+
+.card-title-hover {
+  position: relative;
+  transition: all 0.3s ease 0s;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 2px;
+    width: 0%;
+    height: 2px;
+    background: #333333;
+    transition: 0.3s;
+  }
+}
+.card-img-hover:hover .card-title-hover {
+  &::after {
+    width: 100%;
+  }
+}
+
+#private-checkBox:checked ~ .privateOFF {
+  display: none;
+}
+
+#private-checkBox .privateON {
+  display: none;
+}
+.privateON {
+  display: none;
+}
+#private-checkBox:checked ~ .privateON {
+  display: block;
+}
+
+.tooltip-top:before,
+.tooltip:before {
+  left: -10%;
 }

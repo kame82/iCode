@@ -110,3 +110,6 @@ gem 'dotenv-rails'
 gem 'fog-aws'
 # gem "aws-sdk-s3", require: false
 # gem 'carrierwave-aws'
+
+# enum boolearan
+gem 'enum_help'
