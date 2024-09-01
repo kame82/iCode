@@ -7,18 +7,10 @@
   <% end %>
   <%# // タグの登録 %>
   <div class="flex justify-between items-center">
-            <div class="card-actions justify-start mt-2">
-          <div class="badge badge-secondary">Fashion</div>
-          <div class="badge badge-primary">Products</div>
-        </div>
-    <%# <label class="input input-bordered border-black flex items-center gap-2 h-10 min-h-10">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-        <g clip-path="url(#clip0_88_278)">
-          <path d="M0 9.84836V1.875C0 0.839453 0.839453 0 1.875 0H9.84836C10.3456 2.6003e-06 10.8226 0.197548 11.1742 0.54918L19.4508 8.82582C20.183 9.55805 20.183 10.7452 19.4508 11.4775L11.4775 19.4508C10.7452 20.183 9.55805 20.183 8.82582 19.4508L0.54918 11.1742C0.197548 10.8226 2.6003e-06 10.3456 0 9.84836ZM4.375 2.5C3.33945 2.5 2.5 3.33945 2.5 4.375C2.5 5.41055 3.33945 6.25 4.375 6.25C5.41055 6.25 6.25 5.41055 6.25 4.375C6.25 3.33945 5.41055 2.5 4.375 2.5Z" fill="#333333"/>
-        </g>
-      </svg> %>
-    <%# <input type="text" class="grow" placeholder="Search tag" /> %>
-    <%# </label> %>
+    <div class="card-actions justify-start mt-2">
+      <div class="badge badge-secondary">Fashion</div>
+      <div class="badge badge-primary">Products</div>
+    </div>
     <div class="flex gap-2">
       <% unless action_name == "new" %>
         <% if @favorite == nil %>
