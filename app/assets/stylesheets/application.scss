@@ -29,3 +29,17 @@ header {
 .csustom-tag-width {
   width: 6rem !important;
 }
+
+.card-img-hover:hover {
+  &:hover {
+    transform: scale(1.02);
+    background-color: #f0f5f8;
+    transition: transform 0.2s;
+  }
+  transition: all 0.3s ease 0s;
+}
+
+.card-img-hover:hover + .fav-btn-hover {
+  background-color: #f0f5f8;
+  transition: transform 0.2s;
+}
