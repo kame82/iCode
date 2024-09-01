@@ -1,14 +1,14 @@
-<%= form_with model: model do |form| %>
+<%= form_with model: model , data: {controller: "code-title-edit"} do |form| %>
   <div class="flex items-bottom items-baseline">
   <%# // タイトルの編集 %>
-  <h2 id="code_title" class="mt-10 text-4xl pr-4"><%= @code.title %></h2>
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 25 25" fill="currentColor" id="code_title_edit" class="opacity-70 text-black cursor-pointer  hover:opacity-50">
+    <h2 id="code_title" class="mt-10 text-4xl pr-4"><%= @code.title %></h2>
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 25 25" fill="currentColor" data-action="click->code-title-edit#edit" id="code_title_edit" class="opacity-70 text-black cursor-pointer  hover:opacity-50">
       <g clip-path="url(#clip0_373_2)">
         <path d="M17.474 5.00008L21.3889 8.91501C21.5538 9.07994 21.5538 9.34904 21.3889 9.51397L11.9097 18.9931L7.88194 19.4402C7.34375 19.5009 6.88802 19.0452 6.94878 18.507L7.39583 14.4792L16.875 5.00008C17.0399 4.83515 17.309 4.83515 17.474 5.00008ZM24.5052 4.00616L22.3872 1.8881C21.7274 1.22838 20.6554 1.22838 19.9913 1.8881L18.4549 3.42456C18.2899 3.58949 18.2899 3.85859 18.4549 4.02352L22.3698 7.93845C22.5347 8.10338 22.8038 8.10338 22.9687 7.93845L24.5052 6.40199C25.1649 5.73793 25.1649 4.66588 24.5052 4.00616ZM16.6667 16.415V20.8334H2.77778V6.94453H12.7517C12.8906 6.94453 13.0208 6.8881 13.1207 6.79262L14.8568 5.0565C15.1866 4.72664 14.9523 4.16675 14.4878 4.16675H2.08333C0.93316 4.16675 0 5.09991 0 6.25008V21.5279C0 22.678 0.93316 23.6112 2.08333 23.6112H17.3611C18.5113 23.6112 19.4444 22.678 19.4444 21.5279V14.6789C19.4444 14.2145 18.8845 13.9845 18.5547 14.31L16.8186 16.0461C16.7231 16.1459 16.6667 16.2761 16.6667 16.415Z"/>
       </g>
     </svg>
   </div>
-  <%= form.text_field :title ,id:"code_title_input" ,class:"hidden mt-10 text-4xl"%>
+  <%= form.text_field :title , id: "code_title_input" ,class: "hidden mt-10 text-4xl",data: {action: "keydown.enter->code-title-edit#noSubmit"} %>
   <% if controller.action_name != "new" %>
     <p class="pt-1">Created by <span class="underline"><%= @code.user.name %></span></p>
   <% end %>
@@ -26,7 +26,7 @@
     <%= form.file_field :image %>
     <div class="flex gap-2">
        <%# //保存ボタン %>
-      <%= form.button type: "submit", class: "btn h-10 min-h-10 flex btn-neutral hover:opacity-70", data: { turbo: false } do %>
+      <%= form.button type: "submit", class: "btn h-10 min-h-10 flex btn-neutral hover:opacity-70" do %>
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 23 23" fill="white">
           <path d="M21.751 5.34478L17.6552 1.24897C17.2157 0.809435 16.6195 0.562503 15.9979 0.5625H2.90625C1.61182 0.5625 0.5625 1.61182 0.5625 2.90625V20.0938C0.5625 21.3882 1.61182 22.4375 2.90625 22.4375H20.0938C21.3882 22.4375 22.4375 21.3882 22.4375 20.0938V7.00205C22.4375 6.38045 22.1906 5.78431 21.751 5.34478ZM11.5 19.3125C9.77412 19.3125 8.375 17.9134 8.375 16.1875C8.375 14.4616 9.77412 13.0625 11.5 13.0625C13.2259 13.0625 14.625 14.4616 14.625 16.1875C14.625 17.9134 13.2259 19.3125 11.5 19.3125ZM16.1875 4.44336V9.35156C16.1875 9.67515 15.9251 9.9375 15.6016 9.9375H4.27344C3.94985 9.9375 3.6875 9.67515 3.6875 9.35156V4.27344C3.6875 3.94985 3.94985 3.6875 4.27344 3.6875H15.4316C15.5871 3.6875 15.7361 3.74922 15.8459 3.85913L16.0159 4.02905C16.0703 4.08345 16.1135 4.14804 16.1429 4.21913C16.1724 4.29022 16.1875 4.36641 16.1875 4.44336Z"/>
         </svg>
@@ -100,7 +100,7 @@
       Tab content 2
     </div>
 
-    <button href="#" class="justify-self-end h-8 place-content-center flex items-center hover:opacity-50">
+    <button href="#" class="justify-self-end h-8 place-content-center flex items-center hover:opacity-50 cursor-copy">
       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="20" viewBox="0 0 18 20" fill="currentColor" class="opacity-70 text-black">
         <path d="M12.75 17.5V19.0625C12.75 19.5803 12.3303 20 11.8125 20H1.1875C0.669727 20 0.25 19.5803 0.25 19.0625V4.6875C0.25 4.16973 0.669727 3.75 1.1875 3.75H4V15.3125C4 16.5187 4.98129 17.5 6.1875 17.5H12.75ZM12.75 4.0625V0H6.1875C5.66973 0 5.25 0.419727 5.25 0.9375V15.3125C5.25 15.8303 5.66973 16.25 6.1875 16.25H16.8125C17.3303 16.25 17.75 15.8303 17.75 15.3125V5H13.6875C13.1719 5 12.75 4.57812 12.75 4.0625ZM17.4754 2.85043L14.8996 0.27457C14.7238 0.0987666 14.4853 1.29998e-06 14.2367 0L14 0V3.75H17.75V3.51332C17.75 3.26469 17.6512 3.02624 17.4754 2.85043Z"/>
       </svg>

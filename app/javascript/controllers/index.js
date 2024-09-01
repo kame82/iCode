@@ -4,5 +4,8 @@
 
 import { application } from "./application"
 
+import CodeTitleEditController from "./code_title_edit_controller"
+application.register("code-title-edit", CodeTitleEditController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
