@@ -72,7 +72,7 @@
       </div>
     <% end %>
     <%# // お気に入りボタン %>
-    <% if code.favorites.find_by(code_id: code.id) == nil %>
+    <% if current_user.favorites.find_by(code_id: code.id) == nil %>
       <%= link_to code_favorite_path(code), class:"p-1 absolute top-32 left-2 bg-white rounded-md hover:opacity-70 fav-btn-hover", data: { turbo_method: :post} do %>
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 25 25" class="opacity-70" fill="#333333">
         <g clip-path="url(#clip0_88_301)">
