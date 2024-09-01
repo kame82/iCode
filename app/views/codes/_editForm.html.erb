@@ -76,38 +76,3 @@
     <%= form.text_area :body_html, id: "editorSource_HTML" %>
   </div>
 <% end %>
-<div class="flex my-4">
-  <%# // タブの切り替え %>
-  <div role="tablist" class="tabs tabs-lifted flex-1 grid grid-cols-[auto_1fr_auto] place-content-start">
-    <input
-      type="radio"
-      name="my_tabs_2"
-      role="tab"
-      class="tab bg-base-100 [--tab-bg:#333333] checked:text-white csustom-tag-width"
-      aria-label="HTML"
-      checked="checked"
-      />
-    <div role="tabpanel" class="tab-content bg-customGray border-base-300 rounded-box ">
-      <div id="editor_HTML" class=""></div> <%# HTML_editor挿入位置 %>
-    </div>
-
-    <input
-      type="radio"
-      name="my_tabs_2"
-      role="tab"
-      class="tab bg-base-100 [--tab-bg:#333333] checked:text-white csustom-tag-width"
-      aria-label="CSS"
-      />
-    <div role="tabpanel" class="tab-content border-base-300 rounded-box p-6">
-      Tab content 2
-    </div>
-
-    <button href="#" class="justify-self-end h-8 place-content-center flex items-center hover:opacity-50 cursor-copy">
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="20" viewBox="0 0 18 20" fill="currentColor" class="opacity-70 text-black">
-        <path d="M12.75 17.5V19.0625C12.75 19.5803 12.3303 20 11.8125 20H1.1875C0.669727 20 0.25 19.5803 0.25 19.0625V4.6875C0.25 4.16973 0.669727 3.75 1.1875 3.75H4V15.3125C4 16.5187 4.98129 17.5 6.1875 17.5H12.75ZM12.75 4.0625V0H6.1875C5.66973 0 5.25 0.419727 5.25 0.9375V15.3125C5.25 15.8303 5.66973 16.25 6.1875 16.25H16.8125C17.3303 16.25 17.75 15.8303 17.75 15.3125V5H13.6875C13.1719 5 12.75 4.57812 12.75 4.0625ZM17.4754 2.85043L14.8996 0.27457C14.7238 0.0987666 14.4853 1.29998e-06 14.2367 0L14 0V3.75H17.75V3.51332C17.75 3.26469 17.6512 3.02624 17.4754 2.85043Z"/>
-      </svg>
-      <span class="items-center px-2">copy</span>
-    </button>
-  </div>
-  <iframe id="live_frame" class="flex-1 bg-gray-100 mt-8"></iframe>
-</div>

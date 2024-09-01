@@ -1,0 +1,61 @@
+
+  <div class="flex items-bottom items-baseline">
+    <h2 id="code_title" class="mt-10 text-4xl pr-4"><%= @code.title %></h2>
+  </div>
+  <% if controller.action_name != "new" %>
+    <p class="pt-1">Created by <span class="underline"><%= @code.user.name %></span></p>
+  <% end %>
+  <%# // タグの登録 %>
+  <div class="flex justify-between items-center">
+            <div class="card-actions justify-start mt-2">
+          <div class="badge badge-secondary">Fashion</div>
+          <div class="badge badge-primary">Products</div>
+        </div>
+    <%# <label class="input input-bordered border-black flex items-center gap-2 h-10 min-h-10">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <g clip-path="url(#clip0_88_278)">
+          <path d="M0 9.84836V1.875C0 0.839453 0.839453 0 1.875 0H9.84836C10.3456 2.6003e-06 10.8226 0.197548 11.1742 0.54918L19.4508 8.82582C20.183 9.55805 20.183 10.7452 19.4508 11.4775L11.4775 19.4508C10.7452 20.183 9.55805 20.183 8.82582 19.4508L0.54918 11.1742C0.197548 10.8226 2.6003e-06 10.3456 0 9.84836ZM4.375 2.5C3.33945 2.5 2.5 3.33945 2.5 4.375C2.5 5.41055 3.33945 6.25 4.375 6.25C5.41055 6.25 6.25 5.41055 6.25 4.375C6.25 3.33945 5.41055 2.5 4.375 2.5Z" fill="#333333"/>
+        </g>
+      </svg> %>
+    <%# <input type="text" class="grow" placeholder="Search tag" /> %>
+    <%# </label> %>
+    <div class="flex gap-2">
+      <% unless action_name == "new" %>
+        <% if @favorite == nil %>
+          <%# // お気に入りボタン %>
+          <%= link_to code_favorite_path(model), class:"btn h-10 min-h-10 flex bg-gray-200 px-3", data: { turbo_method: :post} do %>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 25 25" fill="#333333">
+            <g clip-path="url(#clip0_88_301)">
+              <path d="M22.5738 3.49576C19.8981 1.21549 15.9186 1.62564 13.4625 4.15982L12.5006 5.15104L11.5387 4.15982C9.08751 1.62564 5.10314 1.21549 2.42736 3.49576C-0.639049 6.11295 -0.800182 10.8102 1.94396 13.6471L11.3922 23.403C12.0026 24.0329 12.9938 24.0329 13.6041 23.403L23.0524 13.6471C25.8014 10.8102 25.6402 6.11295 22.5738 3.49576Z"/>
+            </g>
+          </svg>
+          <% end %>
+        <% else %>
+          <%# // お気に入り削除ボタン %>
+          <%= link_to code_favorite_path(model), class:"btn h-10 min-h-10 flex bg-gray-200 px-3", data: { turbo_method: :delete} do %>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 25 25" fill="#F4858A">
+            <g clip-path="url(#clip0_88_301)">
+              <path d="M22.5738 3.49576C19.8981 1.21549 15.9186 1.62564 13.4625 4.15982L12.5006 5.15104L11.5387 4.15982C9.08751 1.62564 5.10314 1.21549 2.42736 3.49576C-0.639049 6.11295 -0.800182 10.8102 1.94396 13.6471L11.3922 23.403C12.0026 24.0329 12.9938 24.0329 13.6041 23.403L23.0524 13.6471C25.8014 10.8102 25.6402 6.11295 22.5738 3.49576Z"/>
+            </g>
+          </svg>
+          <% end %>
+        <% end %>
+      <% end %>
+      <% if controller.action_name == "edit" %>
+        <%# // 削除ボタン %>
+        <%= link_to code_path(model), class: "btn btn-error h-10 min-h-10 hover:opacity-70 px-3", data: { turbo_method: :delete, turbo_confirm: t('message.confirm_delete')} do%>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 25 25" fill="#333333">
+            <g clip-path="url(#clip0_88_305)">
+              <path d="M22.6562 1.56251H16.7969L16.3379 0.649423C16.2407 0.454215 16.0909 0.29001 15.9054 0.175281C15.72 0.0605526 15.5062 -0.00014785 15.2881 8.5609e-06H9.70703C9.48944 -0.000827891 9.27602 0.0596463 9.09121 0.174503C8.90641 0.289359 8.75769 0.453951 8.66211 0.649423L8.20312 1.56251H2.34375C2.13655 1.56251 1.93784 1.64482 1.79132 1.79133C1.64481 1.93784 1.5625 2.13656 1.5625 2.34376L1.5625 3.90626C1.5625 4.11346 1.64481 4.31217 1.79132 4.45869C1.93784 4.6052 2.13655 4.68751 2.34375 4.68751H22.6562C22.8635 4.68751 23.0622 4.6052 23.2087 4.45869C23.3552 4.31217 23.4375 4.11346 23.4375 3.90626V2.34376C23.4375 2.13656 23.3552 1.93784 23.2087 1.79133C23.0622 1.64482 22.8635 1.56251 22.6562 1.56251ZM4.16016 22.8027C4.19742 23.3978 4.46004 23.9562 4.89456 24.3644C5.32908 24.7727 5.90283 24.9999 6.49902 25H18.501C19.0972 24.9999 19.6709 24.7727 20.1054 24.3644C20.54 23.9562 20.8026 23.3978 20.8398 22.8027L21.875 6.25001H3.125L4.16016 22.8027Z"/>
+            </g>
+          </svg>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <%# // HTMLエディタ %>
+  <div>
+    <%= form_with model: model do |form| %>
+    <%= form.text_area :body_html, id: "editorSource_HTML" %>
+  </div>
+<% end %>

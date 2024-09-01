@@ -3,7 +3,10 @@ class CodesController < ApplicationController
     @codes = Code.eager_load(:user).order(created_at: :desc)
   end
 
-  def show; end
+  def show
+    @code = Code.find(params[:id])
+    @favorite = current_user.favorites.find_by(code_id: @code.id)
+  end
 
   def new
     @code = Code.new
@@ -12,6 +15,11 @@ class CodesController < ApplicationController
   def edit
     @code = Code.find(params[:id])
     @favorite = current_user.favorites.find_by(code_id: @code.id)
+
+    # 他人のコードを表示する場合は、詳細ページにリダイレクトする
+    unless user_owns_code?(@code)
+      redirect_to code_path(@code)
+    end
   end
 
   def create
@@ -46,5 +54,9 @@ class CodesController < ApplicationController
 
   def code_params
     params.require(:code).permit(:title, :body_html, :body_css, :body_js, :is_public, :image)
+  end
+
+  def user_owns_code?(code)
+    code.user_id == current_user.id
   end
 end
