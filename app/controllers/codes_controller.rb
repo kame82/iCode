@@ -1,6 +1,5 @@
 class CodesController < ApplicationController
   before_action :private_code_access?, only: [:show, :edit]
-  before_action :others_edit_access?, only: [:edit]
 
   def index
     @codes = Code.eager_load(:user)
@@ -72,14 +71,6 @@ class CodesController < ApplicationController
   def private_code_access?
     @code = Code.find(params[:id])
     if @code.is_public == "private"  && !user_owns_code?(@code)
-      flash[:alert] = t('flash.code.private')
-      redirect_to codes_path
-    end
-  end
-
-  def others_edit_access?
-    @code = Code.find(params[:id])
-    if !user_owns_code?(@code)
       flash[:alert] = t('flash.code.private')
       redirect_to codes_path
     end
