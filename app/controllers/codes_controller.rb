@@ -1,6 +1,12 @@
 class CodesController < ApplicationController
+  before_action :private_code_access?, only: [:show, :edit]
+  before_action :others_edit_access?, only: [:edit]
+
   def index
-    @codes = Code.eager_load(:user).order(created_at: :desc)
+    @codes = Code.eager_load(:user)
+                 .where(is_public: "public") # 公開コードのみ表示
+                 .or(Code.eager_load(:user).where(user_id: current_user.id)) # 自分のコードも表示
+                 .order(created_at: :desc)
   end
 
   def show
@@ -61,6 +67,22 @@ class CodesController < ApplicationController
 
   def user_owns_code?(code)
     code.user_id == current_user.id
+  end
+
+  def private_code_access?
+    @code = Code.find(params[:id])
+    if @code.is_public == "private"  && !user_owns_code?(@code)
+      flash[:alert] = t('flash.code.private')
+      redirect_to codes_path
+    end
+  end
+
+  def others_edit_access?
+    @code = Code.find(params[:id])
+    if !user_owns_code?(@code)
+      flash[:alert] = t('flash.code.private')
+      redirect_to codes_path
+    end
   end
 
 end

@@ -13,6 +13,7 @@ ja:
       create: 投稿しました
       update: 更新しました
       destroy: 削除しました
+      private: 閲覧権限がありません
   title:
     code_index: コード一覧
   session_page:
