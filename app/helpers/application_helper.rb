@@ -7,4 +7,12 @@ module ApplicationHelper
     else 'bg-gray-500'
     end
   end
+
+  def user_favorite_code_present?(code)
+    user_signed_in? && current_user.favorites.find_by(code_id: code.id).present?
+  end
+
+  def user_favorite_code_nil?(code)
+    user_signed_in? && current_user.favorites.find_by(code_id: code.id).nil?
+  end
 end
