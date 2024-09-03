@@ -39,4 +39,25 @@ export default class extends Controller {
       codeTitleInput.style.display = "none";
     });
   }
+
+  // プライベートチェックボックスの表示切り替え
+  initialize() {
+    this.toggleIconDisplay();
+  }
+  public() {
+    this.toggleIconDisplay();
+  }
+  toggleIconDisplay() {
+    const publicIcon = document.getElementById("public_icon");
+    const privateIcon = document.getElementById("private_icon");
+    const checkBox = document.getElementById("private-checkBox");
+
+    if (checkBox.checked) {
+      publicIcon.style.display = "none";
+      privateIcon.style.display = "inline-block";
+    } else {
+      publicIcon.style.display = "inline-block";
+      privateIcon.style.display = "none";
+    }
+  }
 }

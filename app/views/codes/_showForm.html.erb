@@ -3,7 +3,7 @@
     <h2 id="code_title" class="mt-10 text-4xl pr-4"><%= @code.title %></h2>
   </div>
   <% if controller.action_name != "new" %>
-    <p class="pt-1">Created by <span class="underline"><%= @code.user.name %></span></p>
+    <p class="pt-1">Created by <span class="underline"><%= "#{@code.user.name} (##{@code.user_id})" %></span></p>
   <% end %>
   <%# // タグの登録 %>
   <div class="flex justify-between items-center">

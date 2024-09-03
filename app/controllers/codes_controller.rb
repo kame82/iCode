@@ -1,11 +1,22 @@
 class CodesController < ApplicationController
+  before_action :private_code_access?, only: [:show, :edit]
+  skip_before_action :authenticate_user!, only: [:index, :show, :edit]
+  before_action :redirect_unless_owner, only: [:edit]
+
   def index
-    @codes = Code.eager_load(:user).order(created_at: :desc)
+    unless user_signed_in?
+      @codes = Code.eager_load(:user).where(is_public: "public").order(created_at: :desc)
+    else
+      @codes = Code.eager_load(:user)
+      .where(is_public: "public") # 公開コードのみ表示
+      .or(Code.eager_load(:user).where(user_id: current_user.id)) # 自分のコードも表示
+      .order(created_at: :desc)
+    end
   end
 
   def show
     @code = Code.find(params[:id])
-    @favorite = current_user.favorites.find_by(code_id: @code.id)
+    @favorite = current_user.favorites.find_by(code_id: @code.id) if user_signed_in?
   end
 
   def new
@@ -14,12 +25,7 @@ class CodesController < ApplicationController
 
   def edit
     @code = Code.find(params[:id])
-    @favorite = current_user.favorites.find_by(code_id: @code.id)
-
-    # 他人のコードを表示する場合は、詳細ページにリダイレクトする
-    unless user_owns_code?(@code)
-      redirect_to code_path(@code)
-    end
+    @favorite = current_user.favorites.find_by(code_id: @code.id) if user_signed_in?
   end
 
   def create
@@ -60,7 +66,20 @@ class CodesController < ApplicationController
   end
 
   def user_owns_code?(code)
-    code.user_id == current_user.id
+    code.user == current_user
   end
 
+  def private_code_access?
+    @code = Code.find(params[:id])
+    if @code.is_public == "private"  && !user_owns_code?(@code)
+      flash[:alert] = t('flash.code.private')
+      redirect_to codes_path
+    end
+  end
+
+  # 他人のコードを表示する場合は、詳細ページにリダイレクトする
+  def redirect_unless_owner
+    @code = Code.find(params[:id])
+    redirect_to code_path(@code) unless user_owns_code?(@code)
+  end
 end

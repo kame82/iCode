@@ -28912,21 +28912,32 @@
        }
      });
 
+     // extensionの定義
+     let extensions = [
+       basicSetup,
+       minimalSetup,
+       html(),
+       myTheme,
+       fixedHeightEditor,
+       fixedPaddingEditor,
+       syntaxHighlighting(myHighlightStyle),
+       keymap.of([indentWithTab]),
+       javascript(),
+       Editor_updateListener,
+     ];
+
+     function read_only() {
+       return [EditorState.readOnly.of(true), EditorView.editable.of(false)]; // 読み取り専用,編集不可に設定
+     }
+
+     // data-controllerがあるかどうかで拡張を追加
+     if (document.querySelector('[data-controller="read-only-editor"]')) {
+       extensions.push(read_only());
+     }
+
      // エディタの初期化
      let editor_HTML = new EditorView({
-       // doc: document.querySelector("#editorSource_HTML").value,
-       extensions: [
-         basicSetup,
-         minimalSetup,
-         html(),
-         myTheme,
-         fixedHeightEditor,
-         fixedPaddingEditor,
-         syntaxHighlighting(myHighlightStyle),
-         keymap.of([indentWithTab]),
-         javascript(),
-         Editor_updateListener,
-       ],
+       extensions: extensions,
        parent: document.querySelector("#editor_HTML"),
      });
 
