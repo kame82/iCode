@@ -79,6 +79,10 @@
   </div>
   <%# // HTMLエディタ %>
   <div>
-    <%= form.text_area :body_html, id: "editorSource_HTML" %>
+    <%= form.text_area :body_html, id: "editorSource_HTML",class: "hidden" %>
+  </div>
+  <%# // CSSエディタ %>
+  <div>
+    <%= form.text_area :body_css, id: "editorSource_CSS", class: "hidden" %>
   </div>
 <% end %>

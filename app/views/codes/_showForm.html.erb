@@ -48,6 +48,7 @@
   <%# // HTMLエディタ %>
   <div>
     <%= form_with model: model do |form| %>
-    <%= form.text_area :body_html, id: "editorSource_HTML" %>
+      <%= form.text_area :body_html, id: "editorSource_HTML", class: "hidden" %>
+      <%= form.text_area :body_css, id: "editorSource_CSS", class: "hidden" %>
+    <% end %>
   </div>
-<% end %>
