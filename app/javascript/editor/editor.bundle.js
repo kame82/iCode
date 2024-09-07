@@ -28830,11 +28830,23 @@
 
    // グローバルに関数を定義
    const live_frame = document.getElementById("live_frame");
+
    window.update_live_frame = function () {
      const html_editor_value = document.getElementById("editorSource_HTML").value;
+     const css_editor_value = document.getElementById("editorSource_CSS").value;
 
      if (live_frame && live_frame.contentWindow && live_frame.contentWindow.document) {
        live_frame.contentWindow.document.body.innerHTML = html_editor_value;
+       live_frame.contentWindow.document.head.innerHTML +=
+         '<link rel="stylesheet" href="/assets/iframe.css"></link>';
+       live_frame.contentWindow.document.head.innerHTML += `<style>${css_editor_value}</style>`;
+       live_frame.contentWindow.document.documentElement.classList.add("light");
+       live_frame.contentWindow.document.body.classList.add(
+         "bg-white",
+         "border-2",
+         "border-customGray",
+         "p-4"
+       );
      }
    };
 
@@ -28846,12 +28858,18 @@
      update_live_frame();
    });
 
-   const load_editor_HTML = function () {
-     // editorSource_HTMLの有無を確認
-     const editorSource_HTML = document.querySelector("#editorSource_HTML");
-     if (!editorSource_HTML) {
+   // エディタのセットアップに必要な共通部分を関数化
+   function setupEditor(language, editorElementId, textareaId) {
+     // textareaの有無を確認
+     const textarea = document.querySelector(textareaId);
+     if (!textarea) {
        return; // 要素が存在しない場合、処理を中断
      }
+
+     // ============================
+     // 共通パーツ1
+     // ============================
+
      // テーマの定義
      let myTheme = EditorView.theme(
        {
@@ -28916,13 +28934,12 @@
      let extensions = [
        basicSetup,
        minimalSetup,
-       html(),
        myTheme,
        fixedHeightEditor,
        fixedPaddingEditor,
        syntaxHighlighting(myHighlightStyle),
        keymap.of([indentWithTab]),
-       javascript(),
+       language(), // 動的に言語を指定
        Editor_updateListener,
      ];
 
@@ -28935,36 +28952,38 @@
        extensions.push(read_only());
      }
 
+     // ============================
      // エディタの初期化
-     let editor_HTML = new EditorView({
+     // ============================
+     let editor = new EditorView({
        extensions: extensions,
-       parent: document.querySelector("#editor_HTML"),
+       parent: document.querySelector(editorElementId),
      });
-
-     // エディタの内容をtextareaに同期
-     const syncEditor = () => {
-       editor_HTML.value = editor_HTML.state.sliceDoc();
-     };
-
-     // エディタの内容をtextareaに送信
-     function submitTextarea() {
-       syncEditor();
-       document.querySelector("#editorSource_HTML").value = editor_HTML.value;
-     }
-
-     // エディタ(textarea)の非表示
-     editorSource_HTML.setAttribute("hidden", "true");
 
      // エディタの初期内容を設定
-     editor_HTML.dispatch({
+     editor.dispatch({
        changes: {
          from: 0,
-         to: editor_HTML.state.doc.length, // 既存のドキュメント全体を削除
-         insert: document.querySelector("#editorSource_HTML").value, // 新しい内容を挿入
+         to: editor.state.doc.length,
+         insert: textarea.value,
        },
      });
-   };
 
-   document.addEventListener("turbo:load", load_editor_HTML);
+     // ============================
+     // 共通パーツ2
+     // ============================
+     // エディタの内容をtextareaに送信
+     function submitTextarea() {
+       textarea.value = editor.state.sliceDoc();
+     }
+   }
+
+   document.addEventListener("turbo:load", function () {
+     // HTMLエディタのセットアップ
+     setupEditor(html, "#editor_HTML", "#editorSource_HTML");
+
+     // CSSエディタのセットアップ
+     setupEditor(css, "#editor_CSS", "#editorSource_CSS");
+   });
 
 })();
