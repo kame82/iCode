@@ -1,7 +1,18 @@
 // clipboard API
 document.getElementById("copyBtn").addEventListener("click", function () {
   const HTMLText = document.getElementById("HTML_tab");
-  const copyText = document.getElementById("editorSource_HTML").value;
+  const CSSText = document.getElementById("CSS_tab");
+  console.log(HTMLText.checked);
+
+  let copyText;
+  if (HTMLText.checked == true) {
+    copyText = document.getElementById("editorSource_HTML").value;
+  } else if (CSSText.checked == true) {
+    copyText = document.getElementById("editorSource_CSS").value;
+  } else {
+    alert("Please select the language you want to copy");
+  }
+
   const copyBtn = document.getElementById("copyBtn");
   const copiedText = document.getElementById("copiedText");
 
