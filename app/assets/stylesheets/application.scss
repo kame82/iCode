@@ -1,10 +1,20 @@
+body {
+  height: 100vh;
+}
+
 header {
   color: #ffffff;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  width: 100%;
 }
 
 .footer {
   row-gap: 1rem;
   color: #333333;
+  position: sticky;
+  bottom: 0;
 }
 
 .shadow_custom {

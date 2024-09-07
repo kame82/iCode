@@ -13,11 +13,13 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
 
-  <body id="<%= "#{controller_name}_#{action_name}" %>">
+  <body id="<%= "#{controller_name}_#{action_name}" %>" class="">
     <%= render "layouts/header" %>
     <!-- Flash message -->
+    <div class="mt-20 h-screen flex flex-col">
     <%= render 'layouts/flash_messages' %>
     <%= yield %>
     <%= render "layouts/footer" %>
+    </div>
   </body>
 </html>
