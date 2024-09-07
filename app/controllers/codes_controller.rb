@@ -44,7 +44,7 @@ class CodesController < ApplicationController
     @code = Code.find(params[:id])
     if @code.update(code_params)
       flash[:notice] = t('flash.code.update')
-      redirect_to codes_path
+      redirect_back(fallback_location: codes_path)
     else
       render :edit, status: :unprocessable_entity
     end
