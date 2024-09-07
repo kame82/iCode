@@ -6,10 +6,11 @@
       name="my_tabs_2"
       role="tab"
       class="tab bg-base-100 [--tab-bg:#333333] checked:text-white csustom-tag-width"
+      id="HTML_tab"
       aria-label="HTML"
       checked="checked"
       />
-    <div role="tabpanel" class="tab-content bg-customGray border-base-300 rounded-box ">
+    <div role="tabpanel" class="tab-content bg-customGray border-base-300 rounded-box">
       <div id="editor_HTML" class=""></div> <%# HTML_editor挿入位置 %>
     </div>
 
@@ -24,12 +25,18 @@
       <div id="editor_CSS" class=""></div> <%# CSS_editor挿入位置 %>
     </div>
 
-    <button href="#" class="justify-self-end h-8 place-content-center flex items-center hover:opacity-50 cursor-copy">
+    <button class="justify-self-end h-8 place-content-center flex items-center hover:opacity-50 cursor-copy" id="copyBtn">
       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="20" viewBox="0 0 18 20" fill="currentColor" class="opacity-70 text-black">
         <path d="M12.75 17.5V19.0625C12.75 19.5803 12.3303 20 11.8125 20H1.1875C0.669727 20 0.25 19.5803 0.25 19.0625V4.6875C0.25 4.16973 0.669727 3.75 1.1875 3.75H4V15.3125C4 16.5187 4.98129 17.5 6.1875 17.5H12.75ZM12.75 4.0625V0H6.1875C5.66973 0 5.25 0.419727 5.25 0.9375V15.3125C5.25 15.8303 5.66973 16.25 6.1875 16.25H16.8125C17.3303 16.25 17.75 15.8303 17.75 15.3125V5H13.6875C13.1719 5 12.75 4.57812 12.75 4.0625ZM17.4754 2.85043L14.8996 0.27457C14.7238 0.0987666 14.4853 1.29998e-06 14.2367 0L14 0V3.75H17.75V3.51332C17.75 3.26469 17.6512 3.02624 17.4754 2.85043Z"/>
       </svg>
-      <span class="items-center px-2">copy</span>
+      <span class="items-center px-2">Copy</span>
     </button>
+    <div class="justify-self-end h-8 place-content-center flex items-center hidden" id="copiedText">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 25 25" fill="none">
+        <path d="M8.4911 21.4554L0.366101 13.3304C-0.122034 12.8422 -0.122034 12.0508 0.366101 11.5626L2.13383 9.79481C2.62196 9.30663 3.41346 9.30663 3.9016 9.79481L9.37499 15.2682L21.0984 3.54481C21.5865 3.05668 22.378 3.05668 22.8662 3.54481L24.6339 5.31259C25.122 5.80072 25.122 6.59218 24.6339 7.08036L10.2589 21.4554C9.77069 21.9435 8.97924 21.9435 8.4911 21.4554Z" fill="#3BC85A"/>
+      </svg>
+      <span class="items-center px-2">Copied</span>
+    </div>
   </div>
   <iframe id="live_frame" class="flex-1 bg-white border-2 border-customGray mt-8"></iframe>
 </div>
