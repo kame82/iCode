@@ -13,9 +13,6 @@ import { indentWithTab } from "@codemirror/commands";
 import { javascript } from "@codemirror/lang-javascript";
 // ------------------------------------------------
 
-// live_frameの要素を取得
-import "./live_frame.js";
-
 // エディタのセットアップに必要な共通部分を関数化
 function setupEditor(language, editorElementId, textareaId) {
   // textareaの有無を確認
