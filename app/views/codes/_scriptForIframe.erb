@@ -1,5 +1,4 @@
 <script>
-  var iframeCssPath = "<%= asset_path('iframe.css') %>";
 
 window.update_live_frame = function () {
   const html_editor_value = document.getElementById("editorSource_HTML").value;
@@ -8,7 +7,7 @@ window.update_live_frame = function () {
   if (live_frame && live_frame.contentWindow && live_frame.contentWindow.document) {
     live_frame.contentWindow.document.body.innerHTML = html_editor_value;
     live_frame.contentWindow.document.head.innerHTML =
-      '<link rel="stylesheet" href="' + iframeCssPath + '"></link>';
+      '<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">';
     live_frame.contentWindow.document.head.innerHTML += `<style>${css_editor_value}</style>`;
     live_frame.contentWindow.document.documentElement.classList.add("light");
     live_frame.contentWindow.document.body.classList.add(
