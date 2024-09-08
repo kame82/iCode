@@ -1,10 +1,10 @@
 <div class="container py-10 mx-10 mx-auto">
   <h2 class="text-left text-3xl ml-6 font-bold"><%= t('title.code_index') %></h2>
-  <div class="py-4 bg-gray-950 rounded mt-11">
+  <div class="py-4 bg-gray-950 rounded mt-11 sp:mt-6">
     <div class="mx-4 flex justify-between">
       <div class="flex gap-2">
         <label class="input input-bordered flex items-center gap-2 max-w-60 h-full min-h-10">
-          <input type="text" class="grow" placeholder="Search" />
+          <input type="text" class="grow  w-full" placeholder="Search" />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 16 16"
@@ -24,12 +24,12 @@
           <input type="text" class="max-w-24" placeholder="Search" />
         </label> %>
       </div>
-      <div class="flex gap-2">
+      <div class="flex gap-2 tb:ml-2">
         <%= link_to new_code_path, data: { turbo:false }, class: "btn bg-white rounded-lg flex items-center justify-center h-full min-h-10" do %>
           <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="currentColor" class="text-black w-5 h-10">
             <path d="M21.875 10.1562H14.8438V3.125C14.8438 2.26221 14.144 1.5625 13.2812 1.5625H11.7188C10.856 1.5625 10.1562 2.26221 10.1562 3.125V10.1562H3.125C2.26221 10.1562 1.5625 10.856 1.5625 11.7188V13.2812C1.5625 14.144 2.26221 14.8438 3.125 14.8438H10.1562V21.875C10.1562 22.7378 10.856 23.4375 11.7188 23.4375H13.2812C14.144 23.4375 14.8438 22.7378 14.8438 21.875V14.8438H21.875C22.7378 14.8438 23.4375 14.144 23.4375 13.2812V11.7188C23.4375 10.856 22.7378 10.1562 21.875 10.1562Z" fill="#333333"/>
           </svg>
-          <p class="text-base">New</p>
+          <p class="text-base sp:hidden">New</p>
         <% end %>
         <div class="flex gap-0.5">
           <%= link_to codes_path(old: "true"), class:"btn bg-white rounded-r-none flex items-center justify-center px-0 h-full min-h-10" do %>
@@ -47,6 +47,9 @@
     </div>
   </div>
   <%# // コードの一覧表示 %>
+  <div class="hidden tb:block">
+    <%= paginate @codes, left: 1, right: 3, outer_window: 3,window: 2 %>
+  </div>
   <div class="grid autoFill gap-4 pt-4 mx-2">
   <% @codes.each do |code| %>
     <div class="relative">

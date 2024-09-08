@@ -1,3 +1,9 @@
+@media screen and (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+}
+
 body {
   min-height: calc(100vh - 80px);
   position: relative;
@@ -83,4 +89,14 @@ header {
 .tooltip-top:before,
 .tooltip:before {
   left: -10%;
+}
+
+.mt-25vh {
+  margin-top: 25vh;
+}
+
+@media screen and (max-width: 600px) {
+  .csustom-tag-width {
+    width: 5rem !important;
+  }
 }
