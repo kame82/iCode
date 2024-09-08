@@ -15,4 +15,5 @@ module ApplicationHelper
   def user_favorite_code_nil?(code)
     user_signed_in? && current_user.favorites.find_by(code_id: code.id).nil?
   end
+
 end

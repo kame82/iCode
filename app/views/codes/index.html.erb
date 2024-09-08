@@ -32,16 +32,16 @@
           <p class="text-base">New</p>
         <% end %>
         <div class="flex gap-0.5">
-          <a href="#" class="btn bg-white rounded-r-none flex items-center justify-center px-0 h-full min-h-10">
+          <%= link_to codes_path(old: "true"), class:"btn bg-white rounded-r-none flex items-center justify-center px-0 h-full min-h-10" do %>
             <svg xmlns="http://www.w3.org/2000/svg" width="27" height="25" viewBox="0 0 27 25" fill="currentColor" class="text-black w-10 h-5">
               <path d="M4.0821 14.1357L2.96842 13.0518C2.49686 12.5928 2.49686 11.8506 2.96842 11.3965L12.7156 1.9043C13.1872 1.44531 13.9497 1.44531 14.4163 1.9043L24.1635 11.3916C24.6351 11.8506 24.6351 12.5928 24.1635 13.0469L23.0498 14.1309C22.5732 14.5947 21.7957 14.585 21.3291 14.1113L15.5751 8.23242V22.2656C15.5751 22.915 15.0383 23.4375 14.3711 23.4375H12.7658C12.0986 23.4375 11.5618 22.915 11.5618 22.2656V8.23242L5.80279 14.1162C5.33624 14.5947 4.55867 14.6045 4.0821 14.1357Z" fill="#333333"/>
             </svg>
-          </a>
-          <a href="#" class="btn bg-white rounded-l-none flex items-center justify-center px-0 h-full min-h-10">
+          <% end %>
+          <%= link_to codes_path(latest: "true"), class:"btn bg-white rounded-l-none flex items-center justify-center px-0 h-full min-h-10" do %>
             <svg xmlns="http://www.w3.org/2000/svg" width="27" height="25" viewBox="0 0 27 25" fill="currentColor" class="text-black w-10 h-5">
                 <path d="M20.6574 10.8643L21.7711 11.9482C22.2426 12.4072 22.2426 13.1494 21.7711 13.6035L12.0238 23.0957C11.5523 23.5547 10.7897 23.5547 10.3232 23.0957L0.570955 13.6035C0.0993953 13.1445 0.0993953 12.4023 0.570955 11.9482L1.68464 10.8643C2.16121 10.4004 2.93878 10.4102 3.40533 10.8838L9.16437 16.7676V2.73438C9.16437 2.08496 9.70115 1.5625 10.3684 1.5625H11.9737C12.6409 1.5625 13.1776 2.08496 13.1776 2.73438V16.7676L18.9367 10.8838C19.4032 10.4053 20.1808 10.3955 20.6574 10.8643Z" fill="#333333"/>
             </svg>
-          </a>
+          <% end %>
         </div>
       </div>
     </div>
