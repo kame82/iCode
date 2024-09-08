@@ -5,12 +5,14 @@ class CodesController < ApplicationController
 
   def index
     unless user_signed_in?
-      @codes = Code.eager_load(:user).where(is_public: "public").order(created_at: :desc)
+      @codes = Code.eager_load(:user).where(is_public: "public").order(created_at: :desc).page(params[:page]).per(15)
     else
       @codes = Code.eager_load(:user)
       .where(is_public: "public") # 公開コードのみ表示
       .or(Code.eager_load(:user).where(user_id: current_user.id)) # 自分のコードも表示
       .order(created_at: :desc)
+      .page(params[:page])
+      .per(15)
     end
   end
 

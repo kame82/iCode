@@ -113,3 +113,6 @@ gem 'fog-aws'
 
 # enum boolearan
 gem 'enum_help'
+
+# pagination
+gem 'kaminari'
