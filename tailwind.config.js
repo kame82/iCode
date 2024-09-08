@@ -13,6 +13,16 @@ module.exports = {
         backgroundGray: "#F6F6F6",
       },
     },
+    screens: {
+      sp: {
+        max: "540px",
+        // => @media (max-width: 540px) { ... }
+      },
+      tb: {
+        max: "800px",
+        // => @media (max-width: 800px) { ... }
+      },
+    },
   },
   // daisyUI config (optional - here are the default values)
   daisyui: {

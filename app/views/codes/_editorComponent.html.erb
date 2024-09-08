@@ -1,4 +1,4 @@
-<div class="flex my-4">
+<div class="flex my-4 tb:flex-col">
   <%# // タブの切り替え %>
   <div role="tablist" class="tabs tabs-lifted flex-1 grid grid-cols-[auto_1fr_auto] place-content-start">
     <input
@@ -25,15 +25,15 @@
     <div role="tabpanel" class="tab-content bg-customGray border-base-300 rounded-box">
       <div id="editor_CSS" class=""></div> <%# CSS_editor挿入位置 %>
     </div>
-    <label class="flex mr-4 items-center h-8 cursor-pointer px-2" data-action="click->code-title-edit#tailwind">
+    <label class="flex mr-4 items-center h-8 cursor-pointer px-2 tb:mr-2" data-action="click->code-title-edit#tailwind">
       <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 128 128" fill="#38bdf8" class="mr-1" id="tailwindIcon"><path d="M64.004 25.602c-17.067 0-27.73 8.53-32 25.597 6.398-8.531 13.867-11.73 22.398-9.597 4.871 1.214 8.352 4.746 12.207 8.66C72.883 56.629 80.145 64 96.004 64c17.066 0 27.73-8.531 32-25.602-6.399 8.536-13.867 11.735-22.399 9.602-4.87-1.215-8.347-4.746-12.207-8.66-6.27-6.367-13.53-13.738-29.394-13.738zM32.004 64c-17.066 0-27.73 8.531-32 25.602C6.402 81.066 13.87 77.867 22.402 80c4.871 1.215 8.352 4.746 12.207 8.66 6.274 6.367 13.536 13.738 29.395 13.738 17.066 0 27.73-8.53 32-25.597-6.399 8.531-13.867 11.73-22.399 9.597-4.87-1.214-8.347-4.746-12.207-8.66C55.128 71.371 47.868 64 32.004 64zm0 0"/></svg>
-      <input type="checkbox" id="tailwindCheck" class="toggle toggle-sm toggle-info" checked="checked" />
+      <input type="checkbox" id="tailwindCheck" class="toggle toggle-sm toggle-info tb:hidden" checked="checked" />
     </label>
-    <button class="justify-self-end h-8 place-content-center flex items-center hover:opacity-50 cursor-copy" id="copyBtn">
+    <button class="justify-self-end h-8 place-content-center flex items-center hover:opacity-50 cursor-copy tb:px-2" id="copyBtn">
       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="20" viewBox="0 0 18 20" fill="currentColor" class="opacity-70 text-black">
         <path d="M12.75 17.5V19.0625C12.75 19.5803 12.3303 20 11.8125 20H1.1875C0.669727 20 0.25 19.5803 0.25 19.0625V4.6875C0.25 4.16973 0.669727 3.75 1.1875 3.75H4V15.3125C4 16.5187 4.98129 17.5 6.1875 17.5H12.75ZM12.75 4.0625V0H6.1875C5.66973 0 5.25 0.419727 5.25 0.9375V15.3125C5.25 15.8303 5.66973 16.25 6.1875 16.25H16.8125C17.3303 16.25 17.75 15.8303 17.75 15.3125V5H13.6875C13.1719 5 12.75 4.57812 12.75 4.0625ZM17.4754 2.85043L14.8996 0.27457C14.7238 0.0987666 14.4853 1.29998e-06 14.2367 0L14 0V3.75H17.75V3.51332C17.75 3.26469 17.6512 3.02624 17.4754 2.85043Z"/>
       </svg>
-      <span class="items-center px-2">Copy</span>
+      <span class="items-center px-2 tb:hidden">Copy</span>
     </button>
     <div class="justify-self-end h-8 place-content-center flex items-center hidden" id="copiedText">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 25 25" fill="none">
