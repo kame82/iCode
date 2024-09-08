@@ -35,3 +35,10 @@ ja:
       rmagick_processing_error: "rmagickがファイルを処理できませんでした。画像を確認してください。"
       mime_types_processing_error: "MIME::Typesのファイルを処理できませんでした。Content-Typeを確認してください。"
       mini_magick_processing_error: "MiniMagickがファイルを処理できませんでした。画像を確認してください。エラーメッセージ: %{e}"
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: "最後 &raquo;"
+      previous: "&lsaquo; 前"
+      next: "次 &rsaquo;"
+      truncate: "..."
