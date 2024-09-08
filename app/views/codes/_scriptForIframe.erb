@@ -19,4 +19,23 @@ window.update_live_frame = function () {
   }
 };
 
+// tailwind の付け外し
+let tailwindCheck = () => {
+  console.log("tailwind");
+  const tailwindIcon = document.getElementById("tailwindIcon");
+  const tailwindCheck = document.getElementById("tailwindCheck");
+
+  if (!tailwindCheck.checked) {
+    tailwindIcon.setAttribute("fill", "#333333");
+    tailwindIcon.classList.add("opacity-70");
+    live_frame.contentWindow.document.head.innerHTML = "";
+  } else {
+    tailwindIcon.setAttribute("fill", "#38bdf8");
+    live_frame.contentWindow.document.head.innerHTML =
+      '<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">';
+  }
+};
+
+document.getElementById("tailwindCheck").addEventListener("click", tailwindCheck);
+
 </script>

@@ -23,7 +23,7 @@
     <input type="text" class="grow" placeholder="Search tag" />
     </label>
     <%# // 画像のアップロード %>
-    <%= form.file_field :image %>
+    <%= form.file_field :image, class:"file-input file-input-bordered w-full max-w-xs file-input-sm h-10" %>
     <div class="flex gap-2">
        <%# //保存ボタン %>
       <%= form.button type: "submit", class: "btn h-10 min-h-10 flex btn-neutral hover:opacity-70" do %>
