@@ -4,16 +4,15 @@ class CodesController < ApplicationController
   before_action :redirect_unless_owner, only: [:edit]
 
   def index
-    unless user_signed_in?
-      @codes = Code.eager_load(:user).where(is_public: "public").order(created_at: :desc).page(params[:page]).per(15)
-    else
-      @codes = Code.eager_load(:user)
-      .where(is_public: "public") # 公開コードのみ表示
-      .or(Code.eager_load(:user).where(user_id: current_user.id)) # 自分のコードも表示
-      .order(created_at: :desc)
-      .page(params[:page])
-      .per(15)
-    end
+    @codes = Code.eager_load(:user)
+    @codes = if user_signed_in?
+               @codes.where(is_public: "public").or(@codes.where(user_id: current_user.id))
+             else
+               @codes.where(is_public: "public")
+             end
+
+    order = params[:old] ? :asc : :desc
+    @codes = @codes.order(created_at: order).page(params[:page]).per(15)
   end
 
   def show
