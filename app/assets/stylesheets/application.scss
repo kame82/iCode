@@ -1,5 +1,7 @@
 body {
-  height: 100vh;
+  min-height: calc(100vh - 80px);
+  position: relative;
+  padding-bottom: 40rem;
 }
 
 header {
@@ -13,7 +15,7 @@ header {
 .footer {
   row-gap: 1rem;
   color: #333333;
-  position: sticky;
+  position: absolute;
   bottom: 0;
 }
 
