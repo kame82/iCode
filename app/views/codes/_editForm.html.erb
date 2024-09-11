@@ -35,6 +35,7 @@
         <p class="text-lg">Save</p>
       <% end %>
       <% unless action_name == "new" %>
+      <% if model.persisted? %>
         <% if @favorite == nil %>
           <%# // お気に入りボタン %>
           <%= link_to code_favorite_path(model), class:"btn h-10 min-h-10 flex bg-gray-200 px-3", data: { turbo_method: :post} do %>
@@ -54,6 +55,7 @@
           </svg>
           <% end %>
         <% end %>
+      <% end %>
       <% end %>
       <%# // プライベートボタン %>
       <div class="tooltip" data-tip="Public/Private">

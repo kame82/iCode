@@ -9,5 +9,3 @@ import "./editor/live_frame.js";
 
 // クリップボードにコピーする
 import "./editor/copyClipboard.js";
-
-import "./editor/tailwindCheck.js";

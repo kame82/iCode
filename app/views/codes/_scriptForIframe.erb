@@ -20,8 +20,8 @@ window.update_live_frame = function () {
 };
 
 // tailwind の付け外し
-let tailwindCheck = () => {
-  console.log("tailwind");
+  if (typeof tailwindChecks === 'undefined') {
+    var tailwindChecks = function () {
   const tailwindIcon = document.getElementById("tailwindIcon");
   const tailwindCheck = document.getElementById("tailwindCheck");
 
@@ -35,7 +35,7 @@ let tailwindCheck = () => {
       '<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">';
   }
 };
-
-document.getElementById("tailwindCheck").addEventListener("click", tailwindCheck);
+};
+document.getElementById("tailwindCheck").addEventListener("click", tailwindChecks);
 
 </script>

@@ -3,11 +3,12 @@
   <head>
     <title>iCode</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta property="og:title" content="コードストックアプリ iCode">
     <meta property="og:description" content="iCodeでは、あなたのコードを簡単に保存、管理、共有できます。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://icode-app.com">
-    <meta property="og:image" content="https://myicode.s3.ap-northeast-1.amazonaws.com/icodeOgp.webp">
+    <meta property="og:image" content="/icodeOgp.webp">
     <meta property="og:site_name" content="iCode-app">
     <meta property="og:locale" content="ja_JP">
     <meta name="twitter:card" content="summary">
@@ -25,10 +26,10 @@
   <body id="<%= "#{controller_name}_#{action_name}" %>" class="pb-28 sp:pb-44">
     <%= render "layouts/header" %>
     <!-- Flash message -->
-    <div class="mt-20 flex flex-col h-full">
+    <div class="mt-20 flex flex-col h-full mx-auto width-adj">
     <%= render 'layouts/flash_messages' %>
     <%= yield %>
-    <%= render "layouts/footer" %>
     </div>
+    <%= render "layouts/footer" %>
   </body>
 </html>
