@@ -116,3 +116,5 @@ gem 'enum_help'
 
 # pagination
 gem 'kaminari'
+
+gem 'meta-tags'
