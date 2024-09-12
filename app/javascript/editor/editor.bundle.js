@@ -28950,12 +28950,18 @@
      }
    }
 
-   document.addEventListener("turbo:load", function () {
+   function setupEditors() {
      // HTMLエディタのセットアップ
-     setupEditor(html, "#editor_HTML", "#editorSource_HTML");
+     if (!document.querySelector("#editor_HTML .cm-editor")) {
+       setupEditor(html, "#editor_HTML", "#editorSource_HTML");
+     }
 
      // CSSエディタのセットアップ
-     setupEditor(css, "#editor_CSS", "#editorSource_CSS");
-   });
+     if (!document.querySelector("#editor_CSS .cm-editor")) {
+       setupEditor(css, "#editor_CSS", "#editorSource_CSS");
+     }
+   }
+   document.addEventListener("turbo:load", setupEditors);
+   document.addEventListener("turbo:render", setupEditors);
 
 })();
