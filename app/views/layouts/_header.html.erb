@@ -1,7 +1,7 @@
 <header class="bg-gray-950">
   <div class="container px-5 py-5 flex justify-between mx-auto width-adj">
     <h1><%=link_to "iCode", root_path, class: "text-4xl sp:text-2xl font-bold" %></h1>
-    <div class="flex gap-x-7 items-center">
+    <div class="flex gap-x-7 items-center tb:gap-x-4">
       <%= link_to t('header.code_index'), codes_path, class: "link link-hover" %>
       <% if user_signed_in? %>
         <div class="dropdown dropdown-hover dropdown-end">

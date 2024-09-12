@@ -19,8 +19,8 @@ module.exports = {
         // => @media (max-width: 540px) { ... }
       },
       tb: {
-        max: "800px",
-        // => @media (max-width: 800px) { ... }
+        max: "860px",
+        // => @media (max-width: 860px) { ... }
       },
     },
   },
