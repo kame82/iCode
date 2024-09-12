@@ -43,7 +43,7 @@ module ApplicationHelper
         type: 'website',
         title: title,
         url: request.original_url,
-        image: image_url('icodeOgp.webp'),
+        image:,
         locale: 'ja_JP',
       },
       twitter: {
