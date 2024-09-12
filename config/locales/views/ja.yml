@@ -1,10 +1,10 @@
 ja:
   meta_tags:
     defaults:
-      site: "iCide"
+      site: "iCode"
       titile: "コードストックアプリ iCode"
       description: "iCodeでは、あなたのコードを簡単に保存、管理、共有できます。"
-      keywords: "iCide,コードストック,コード共有"
+      keywords: "iCode,コードストック,コード共有"
   header:
     code_index: コード一覧
     signup: 新規登録
