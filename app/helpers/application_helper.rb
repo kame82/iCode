@@ -16,25 +16,32 @@ module ApplicationHelper
     user_signed_in? && current_user.favorites.find_by(code_id: code.id).nil?
   end
 
-  def default_meta_tags
-    {
-      site: 'icode',
-      title: 'コードストックアプリ iCode',
-      # reverse: true,
-      separator: '|',   #Webサイト名とページタイトルを区切るために使用されるテキスト
-      description: 'iCodeでは、あなたのコードを簡単に保存、管理、共有できます。',
-      keywords: 'icode,codestock',   #キーワードを「,」区切りで設定する
-      canonical: request.original_url,   #優先するurlを指定する
-      noindex: ! Rails.env.production?,
-      icon: [                    #favicon、apple用アイコンを指定する
-        { href: image_url('favicon.ico') },
-        # { href: image_url('icon.jpg'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/jpg' },
-      ],
+  def show_meta_tags
+    assign_meta_tags if display_meta_tags.blank?
+    display_meta_tags
+  end
+
+  def assign_meta_tags(options = {})
+  defaults = t('meta_tags.defaults')
+  options.reverse_merge!(defaults)
+
+    site = options[:site]
+    title = options[:title]
+    description = options[:description]
+    keywords = options[:keywords]
+    image = options[:image].presence || image_url('icodeOgp.webp')
+
+    configs = {
+      separator: '|',
+      reverse: true,
+      site: site,
+      titile: title,
+      description: description,
+      keywords: keywords,
+      canonical: request.original_url,
       og: {
-        site_name: 'icode',
-        title: 'コードストックアプリ iCode',
-        description: 'iCodeでは、あなたのコードを簡単に保存、管理、共有できます。',
         type: 'website',
+        title: title,
         url: request.original_url,
         image: image_url('icodeOgp.webp'),
         locale: 'ja_JP',
@@ -43,9 +50,7 @@ module ApplicationHelper
         card: 'summary',
         # site: '@ツイッターのアカウント名',
       }
-      # fb: {
-        # app_id: '自身のfacebookのapplication ID'
-      # }
     }
+    set_meta_tags(configs)
   end
 end
