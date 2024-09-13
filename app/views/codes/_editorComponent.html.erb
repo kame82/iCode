@@ -1,6 +1,6 @@
 <div class="flex my-4 tb:flex-col">
   <%# // タブの切り替え %>
-  <div role="tablist" class="tabs tabs-lifted flex-1 grid grid-cols-[auto_1fr_auto] place-content-start">
+  <div role="tablist" class="tabs tabs-lifted flex-1 grid grid-cols-[auto_auto_1fr_auto] place-content-start">
     <input
       type="radio"
       name="my_tabs_2"
@@ -25,6 +25,19 @@
     <div role="tabpanel" class="tab-content bg-customGray border-base-300 rounded-box">
       <div id="editor_CSS" class=""></div> <%# CSS_editor挿入位置 %>
     </div>
+
+    <input
+      type="radio"
+      name="my_tabs_2"
+      role="tab"
+      class="tab bg-base-100 [--tab-bg:#333333] checked:text-white csustom-tag-width"
+      id="JS_tab"
+      aria-label="JS"
+      />
+    <div role="tabpanel" class="tab-content bg-customGray border-base-300 rounded-box">
+      <div id="editor_JS" class=""></div> <%# JS_editor挿入位置 %>
+    </div>
+
     <label class="flex mr-4 items-center h-8 cursor-pointer px-2 tb:mr-2" data-action="click->code-title-edit#tailwind">
       <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 128 128" fill="#38bdf8" class="mr-1" id="tailwindIcon"><path d="M64.004 25.602c-17.067 0-27.73 8.53-32 25.597 6.398-8.531 13.867-11.73 22.398-9.597 4.871 1.214 8.352 4.746 12.207 8.66C72.883 56.629 80.145 64 96.004 64c17.066 0 27.73-8.531 32-25.602-6.399 8.536-13.867 11.735-22.399 9.602-4.87-1.215-8.347-4.746-12.207-8.66-6.27-6.367-13.53-13.738-29.394-13.738zM32.004 64c-17.066 0-27.73 8.531-32 25.602C6.402 81.066 13.87 77.867 22.402 80c4.871 1.215 8.352 4.746 12.207 8.66 6.274 6.367 13.536 13.738 29.395 13.738 17.066 0 27.73-8.53 32-25.597-6.399 8.531-13.867 11.73-22.399 9.597-4.87-1.214-8.347-4.746-12.207-8.66C55.128 71.371 47.868 64 32.004 64zm0 0"/></svg>
       <input type="checkbox" id="tailwindCheck" class="toggle toggle-sm toggle-info tb:hidden" checked="checked" />
@@ -42,5 +55,5 @@
       <span class="items-center px-2">Copied</span>
     </div>
   </div>
-  <iframe id="live_frame" class="flex-1 bg-white border-2 border-customGray mt-8"></iframe>
+  <iframe id="live_frame" class="flex-1 bg-white border-2 border-customGray mt-8 overlay-active"></iframe>
 </div>

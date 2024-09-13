@@ -24,7 +24,7 @@
       <input type="text" class="grow" placeholder="Add tag (tag1,tag2,...)" />
       </label>
       <%# // 画像のアップロード %>
-      <div class="tooltip" data-tip="Uploard_Image">
+      <div class="tooltip tip_image" data-tip="Uploard_Image">
         <%= form.file_field :image, class:"file-input file-input-bordered w-full max-w-64 file-input-sm h-10 ml-2 sp:ml-0 " %>
       </div>
     </div>
@@ -96,5 +96,9 @@
   <%# // CSSエディタ %>
   <div>
     <%= form.text_area :body_css, id: "editorSource_CSS", class: "hidden" %>
+  </div>
+  <%# // JSエディタ %>
+  <div>
+    <%= form.text_area :body_js, id: "editorSource_JS", class: "hidden" %>
   </div>
 <% end %>
