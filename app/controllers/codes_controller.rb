@@ -12,7 +12,7 @@ class CodesController < ApplicationController
              end
 
     order = params[:old] ? :asc : :desc
-    @codes = @codes.order(created_at: order).page(params[:page]).per(24)
+    @codes = @codes.order(created_at: order).page(params[:page]).per(16)
   end
 
   def show

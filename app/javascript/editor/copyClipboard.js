@@ -5,12 +5,15 @@ function attachClipboardListener() {
     document.getElementById("copyBtn").addEventListener("click", function () {
       const HTMLText = document.getElementById("HTML_tab");
       const CSSText = document.getElementById("CSS_tab");
+      const JSText = document.getElementById("JS_tab");
 
       let copyText;
       if (HTMLText.checked == true) {
         copyText = document.getElementById("editorSource_HTML").value;
       } else if (CSSText.checked == true) {
         copyText = document.getElementById("editorSource_CSS").value;
+      } else if (JSText.checked == true) {
+        copyText = document.getElementById("editorSource_JS").value;
       } else {
         alert("Please select the language you want to copy");
       }

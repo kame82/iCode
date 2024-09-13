@@ -28960,6 +28960,11 @@
      if (!document.querySelector("#editor_CSS .cm-editor")) {
        setupEditor(css, "#editor_CSS", "#editorSource_CSS");
      }
+
+     // JSエディタのセットアップ
+     if (!document.querySelector("#editor_JS .cm-editor")) {
+       setupEditor(javascript, "#editor_JS", "#editorSource_JS");
+     }
    }
    document.addEventListener("turbo:load", setupEditors);
    document.addEventListener("turbo:render", setupEditors);
