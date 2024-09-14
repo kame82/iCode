@@ -118,3 +118,6 @@ gem 'enum_help'
 gem 'kaminari'
 
 gem 'meta-tags'
+
+# # search function
+# gem 'ransack', '3.2.1'
