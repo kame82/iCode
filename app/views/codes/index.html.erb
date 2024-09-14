@@ -83,10 +83,14 @@
           </h2>
         </div>
         <p class="text-xs">Created by <span class="underline"><%= "#{code.user.name} (##{code.user_id})" %></span></p>
-        <%# <div class="card-actions justify-start mt-2">
-          <div class="badge badge-secondary">Fashion</div>
-          <div class="badge badge-primary">Products</div>
-        </div> %>
+        <%# // Tag表示 %>
+        <div class="card-actions justify-start mt-2">
+          <% if code.tags.present? %>
+            <% code.tags.each do |tag| %>
+              <div class="badge badge-neutral"><%= tag.tag_name %></div>
+            <% end %>
+          <% end %>
+        </div>
       </div>
     <% end %>
     <%# // お気に入りボタン %>

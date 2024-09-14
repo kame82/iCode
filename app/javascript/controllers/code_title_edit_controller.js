@@ -11,6 +11,11 @@ export default class extends Controller {
     codeTitleInput.blur();
     event.preventDefault();
   }
+  noSubmitTag(event) {
+    const tagInput = document.getElementById("tag_input");
+    tagInput.blur();
+    event.preventDefault();
+  }
   edit() {
     const codeTitle = document.getElementById("code_title");
     const codeTitleEdit = document.getElementById("code_title_edit");

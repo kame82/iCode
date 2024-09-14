@@ -27,13 +27,15 @@ class CodesController < ApplicationController
   def edit
     @code = Code.find(params[:id])
     @favorite = current_user.favorites.find_by(code_id: @code.id) if user_signed_in?
+    @tag_names = @code.tags.pluck(:tag_name).join(',')
   end
 
   def create
     @code = Code.new(code_params)
     @code.user = current_user
-
+    tag_list = params[:code][:tag_name].split(',')
     if @code.save
+      @code.save_tags(tag_list)
       flash[:notice] = t('flash.code.create')
       redirect_to codes_path
     else
@@ -43,7 +45,9 @@ class CodesController < ApplicationController
 
   def update
     @code = Code.find(params[:id])
+    tag_list = params[:code][:tag_name].split(',')
     if @code.update(code_params)
+      @code.save_tags(tag_list)
       flash[:notice] = t('flash.code.update')
       redirect_back(fallback_location: codes_path)
     else
@@ -63,7 +67,7 @@ class CodesController < ApplicationController
   def code_params
     # is_publicをintegerに変換してparamsにセットする
     params[:code][:is_public] = params[:code][:is_public].to_i if params[:code][:is_public]
-    params.require(:code).permit(:title, :body_html, :body_css, :body_js, :is_public, :image)
+    params.require(:code).permit(:title, :body_html, :body_css, :body_js, :is_public, :image, :tag_names)
   end
 
   def user_owns_code?(code)
@@ -83,4 +87,5 @@ class CodesController < ApplicationController
     @code = Code.find(params[:id])
     redirect_to code_path(@code) unless user_owns_code?(@code)
   end
+
 end

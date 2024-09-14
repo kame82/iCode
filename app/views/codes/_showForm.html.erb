@@ -8,8 +8,11 @@
   <%# // タグの登録 %>
   <div class="flex justify-between items-center">
     <div class="card-actions justify-start mt-2">
-      <div class="badge badge-secondary">Fashion</div>
-      <div class="badge badge-primary">Products</div>
+      <% if @code.tags.present? %>
+        <% @code.tags.each do |tag| %>
+          <div class="badge badge-neutral"><%= tag.tag_name %></div>
+        <% end %>
+      <% end %>
     </div>
     <div class="flex gap-2">
       <% unless action_name == "new" %>
