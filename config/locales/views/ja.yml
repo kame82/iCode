@@ -10,6 +10,8 @@ ja:
     signup: 新規登録
     login: ログイン
     logout: ログアウト
+    favorite: お気に入り
+    my_code: 投稿一覧
   footer:
     contact: お問い合わせ
     terms: 利用規約
@@ -22,6 +24,8 @@ ja:
       private: 閲覧権限がありません
   title:
     code_index: コード一覧
+    favorite_index: お気に入り一覧
+    my_code_index: 投稿一覧
   session_page:
     Login: ログイン
     Login by Google: Googleでログイン

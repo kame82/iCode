@@ -12,7 +12,7 @@ class CodesController < ApplicationController
              end
 
     order = params[:old] ? :asc : :desc
-    @codes = @codes.order(created_at: order).page(params[:page]).per(16)
+    @codes = @codes.order(created_at: order).page(params[:page]).per(12)
   end
 
   def show
@@ -60,6 +60,35 @@ class CodesController < ApplicationController
     @code.destroy!
     flash[:notice] = t('flash.code.destroy')
     redirect_to codes_path
+  end
+
+  def favorites
+    @codes = current_user.favorites.map(&:code)
+    @codes = Code.where(id: @codes.map(&:id)).eager_load(:user)
+
+    if user_signed_in?
+      @codes = @codes.where(is_public: "public").or(@codes.where(user_id: current_user.id))
+    else
+      @codes = @codes.where(is_public: "public")
+    end
+
+    order = params[:old] ? :asc : :desc
+    @codes = @codes.order(created_at: order).page(params[:page]).per(16)
+
+    render :index
+  end
+
+  def my_codes
+    @codes = current_user.codes.eager_load(:user)
+    if user_signed_in?
+      @codes = @codes.where(is_public: "public").or(@codes.where(user_id: current_user.id))
+    else
+      @codes = @codes.where(is_public: "public")
+    end
+
+    order = params[:old] ? :asc : :desc
+    @codes = @codes.order(created_at: order).page(params[:page]).per(16)
+    render :index
   end
 
   private

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resource :favorite, only: [:create, :destroy]
     collection do
       get 'favorites'
+      get 'my_codes'
     end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

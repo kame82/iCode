@@ -1,5 +1,11 @@
 <div class="container py-10 mx-10 mx-auto">
+  <% if action_name == "favorites" %>
+    <h2 class="text-left text-3xl ml-6 font-bold"><%= t('title.favorite_index') %></h2>
+  <% elsif action_name == "my_codes" %>
+    <h2 class="text-left text-3xl ml-6 font-bold"><%= t('title.my_code_index') %></h2>
+  <% else %>
   <h2 class="text-left text-3xl ml-6 font-bold"><%= t('title.code_index') %></h2>
+  <% end %>
   <div class="py-4 bg-gray-950 rounded mt-11 sp:mt-6">
     <div class="mx-4 flex justify-between">
       <div class="flex gap-2">
