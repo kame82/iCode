@@ -44,7 +44,7 @@ module ApplicationHelper
         type: 'website',
         title: title,
         url: request.original_url,
-        image: image,
+        image:,
         locale: 'ja_JP',
       },
       twitter: {
