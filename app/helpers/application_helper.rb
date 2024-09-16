@@ -39,7 +39,7 @@ module ApplicationHelper
       description: description,
       keywords: keywords,
       canonical: request.original_url,
-      # favicon: image_url('favicon.ico'),
+      favicon: image_url('favicon.ico'),
       og: {
         type: 'website',
         title: title,
