@@ -35,7 +35,7 @@ module ApplicationHelper
       separator: '|',
       reverse: true,
       site: site,
-      titile: title,
+      title: title,
       description: description,
       keywords: keywords,
       canonical: request.original_url,
@@ -44,7 +44,7 @@ module ApplicationHelper
         type: 'website',
         title: title,
         url: request.original_url,
-        image:,
+        image: image,
         locale: 'ja_JP',
       },
       twitter: {
