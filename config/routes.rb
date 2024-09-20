@@ -19,4 +19,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  get 'terms_of_service', to: 'static_pages#terms_of_service'
 end
