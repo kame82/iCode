@@ -32,6 +32,10 @@ class Code < ApplicationRecord
     %w[title]
   end
 
+  def self.ransackable_associations(auth_object = nil)
+    ["tags", "user"]
+  end
+
   private
   def remove_image
     image.remove!

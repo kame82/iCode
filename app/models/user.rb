@@ -7,4 +7,8 @@ class User < ApplicationRecord
 
   has_many :codes, dependent: :destroy
   has_many :favorites, dependent: :destroy
+
+  def self.ransackable_attributes(auth_object = nil)
+    %w[name]
+  end
 end

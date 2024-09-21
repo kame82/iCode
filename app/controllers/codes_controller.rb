@@ -4,7 +4,11 @@ class CodesController < ApplicationController
   before_action :redirect_unless_owner, only: [:edit]
 
   def index
-    @codes = Code.eager_load(:user)
+    # @codes = Code.eager_load(:user)
+
+    @q = Code.ransack(params[:q])
+    @codes = @q.result(distinct: true).eager_load(:user)
+
     @codes = if user_signed_in?
                @codes.where(is_public: "public").or(@codes.where(user_id: current_user.id))
              else
@@ -12,10 +16,7 @@ class CodesController < ApplicationController
              end
 
     order = params[:old] ? :asc : :desc
-    # @codes = @codes.order(created_at: order).page(params[:page]).per(12)
-
-    @q = Code.ransack(params[:q])
-    @codes = @q.result(distinct: true).order(created_at: order).page(params[:page]).per(12)
+    @codes = @codes.order(created_at: order).page(params[:page]).per(12)
   end
 
   def show
