@@ -28,6 +28,10 @@ class Code < ApplicationRecord
     end
   end
 
+  def self.ransackable_attributes(auth_object = nil)
+    %w[title]
+  end
+
   private
   def remove_image
     image.remove!
