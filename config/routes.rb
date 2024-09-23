@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    omniauth_callbacks: 'users/omniauth_callbacks'
+  }
   root to: 'static_pages#top'
   resources :users, only: %i[new create]
   # resources :user_sessions, only: [:new, :create, :destroy], as: :login

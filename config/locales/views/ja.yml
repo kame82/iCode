@@ -28,10 +28,10 @@ ja:
     my_code_index: 投稿一覧
   session_page:
     Login: ログイン
-    Login by Google: Googleでログイン
+    Sign in with Google: Googleでログイン
     Login by Github: GitHubでログイン
     Sign up: 新規登録
-    Sing up by Google: Googleで登録
+    Sign up with Google: Googleで登録
     Sing up by Github: GitHubで登録
   message:
     confirm_delete: 本当に削除しますか？
