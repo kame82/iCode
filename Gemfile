@@ -121,3 +121,7 @@ gem 'meta-tags'
 
 # # search function
 gem 'ransack'
+
+# authentication
+gem "omniauth-google-oauth2"
+gem "omniauth-rails_csrf_protection"

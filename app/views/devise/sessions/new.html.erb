@@ -47,8 +47,11 @@
         </div>
       </div>
       <% end %>
-      <div class="w-1/2 hidden">
+      <div class="w-1/2">
         <button href="#" class="block mx-auto"><%= t('session_page.Login by Google') %></button>
+        <div>
+          <%= link_to user_google_oauth2_omniauth_authorize_path, method: :post do %>Google<% end %>
+        </div>
         <button href="#" class="block mx-auto"><%= t('session_page.Login by Github') %></button>
       </div>
     </div>
