@@ -77,6 +77,7 @@ class CodesController < ApplicationController
     end
 
     order = params[:old] ? :asc : :desc
+    @q = @codes.ransack(params[:q])
     @codes = @codes.order(created_at: order).page(params[:page]).per(16)
 
     render :index
@@ -91,6 +92,7 @@ class CodesController < ApplicationController
     end
 
     order = params[:old] ? :asc : :desc
+    @q = @codes.ransack(params[:q])
     @codes = @codes.order(created_at: order).page(params[:page]).per(16)
     render :index
   end

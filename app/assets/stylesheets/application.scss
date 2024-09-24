@@ -232,3 +232,12 @@ header {
   background-color: #303030;
   opacity: 8%;
 }
+
+.github_button {
+  background-color: #3e413f;
+  color: #ffffff;
+
+  &:hover {
+    background-color: #2b2e2c;
+  }
+}
