@@ -29,10 +29,10 @@ ja:
   session_page:
     Login: ログイン
     Sign in with Google: Googleでログイン
-    Login by Github: GitHubでログイン
+    Sign in with Github: GitHubでログイン
     Sign up: 新規登録
     Sign up with Google: Googleで登録
-    Sing up by Github: GitHubで登録
+    Sign up with Github: GitHubで登録
   message:
     confirm_delete: 本当に削除しますか？
   errors:

@@ -3,6 +3,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     callback_for(:google)
   end
 
+  def github
+    callback_for(:github)
+  end
+
   def callback_for(provider)
     @omniauth = request.env["omniauth.auth"]
     info = User.find_oauth(@omniauth)

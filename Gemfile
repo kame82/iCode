@@ -124,4 +124,6 @@ gem 'ransack'
 
 # authentication
 gem "omniauth-google-oauth2"
+gem 'omniauth'
+gem 'omniauth-github'
 gem "omniauth-rails_csrf_protection"
