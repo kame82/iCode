@@ -3,7 +3,7 @@
   <div class="bg-backgroundGray rounded-xl shadow_custom max-w-4xl mx-auto sp:mx-5">
     <h2 class="text-center text-3xl pt-7 font-bold"><%= t('session_page.Change password')%></h2>
     <div class="pt-10 pb-10 justify-center">
-     <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+     <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
       <%= f.hidden_field :reset_password_token %>
 
       <div class="max-w-64 mx-auto">
