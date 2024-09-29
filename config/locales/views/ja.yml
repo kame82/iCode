@@ -35,6 +35,8 @@ ja:
     Sign up with Github: GitHubで登録
     Reset password: パスワード再発行
     Send reset password: 再発行申請
+    Change password: パスワード再設定
+    Reset: 再設定
   message:
     confirm_delete: 本当に削除しますか？
   errors:
