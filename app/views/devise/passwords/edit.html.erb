@@ -1,25 +1,49 @@
   <%= render "devise/shared/error_messages", resource: resource %>
-<h2>Change your password</h2>
+<div class="container py-20 mx-auto sp:py-10">
+  <div class="bg-backgroundGray rounded-xl shadow_custom max-w-4xl mx-auto sp:mx-5">
+    <h2 class="text-center text-3xl pt-7 font-bold"><%= t('session_page.Change password')%></h2>
+    <div class="pt-10 pb-10 justify-center">
+     <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= f.hidden_field :reset_password_token %>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.hidden_field :reset_password_token %>
+      <div class="max-w-64 mx-auto">
+        <label class="input inline-flex items-center h-10 bg-inherit text-customGray rounded-none border-b-2 border-t-0 border-l-0 border-r-0 border-customGray w-full mt-5">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            class="h-5 w-5 opacity-70 text-black">
+            <path
+              fill-rule="evenodd"
+              d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z"
+              clip-rule="evenodd" />
+          </svg>
+          <% if @minimum_password_length %>
+            <%= f.password_field :password, autocomplete: "new-password", class:"block mx-auto placeholder-customGray pl-2",placeholder:"Password (Min #{@minimum_password_length} chars)"%>
+          <% else %>
+            <%= f.password_field :password, autocomplete: "new-password", class:"block mx-auto placeholder-customGray pl-2",placeholder:"Password" %>
+          <% end %>
+        </label>
 
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+        <label class="input inline-flex items-center h-10 bg-inherit text-customGray rounded-none border-b-2 border-t-0 border-l-0 border-r-0 border-customGray w-full mt-5">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            class="h-5 w-5 opacity-70 text-black">
+            <path
+              fill-rule="evenodd"
+              d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z"
+              clip-rule="evenodd" />
+          </svg>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"block mx-auto placeholder-customGray pl-2",placeholder:"Confirm Password"%>
+        </label>
+        <div class="actions text-center mt-10">
+          <%= f.submit t('session_page.Reset'), class: "btn btn-success text-white w-64 max-w-full"%>
+        </div>
+      </div>
     <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+    </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
