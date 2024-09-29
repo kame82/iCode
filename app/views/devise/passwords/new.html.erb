@@ -1,16 +1,32 @@
   <%= render "devise/shared/error_messages", resource: resource %>
-<h2>Forgot your password?</h2>
+<div class="container py-20 mx-auto sp:py-10">
+  <div class="bg-backgroundGray rounded-xl shadow_custom max-w-4xl mx-auto sp:mx-5">
+    <h2 class="text-center text-3xl pt-7 font-bold"><%= t('session_page.Reset password')%></h2>
+    <div class="pt-16 pb-10 justify-center">
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+        <div class="max-w-64 mx-auto">
+          <label class="input inline-flex items-center h-10 bg-inherit text-customGray rounded-none border-b-2 border-t-0 border-l-0 border-r-0 border-customGray w-full">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              fill="currentColor"
+              class="h-5 w-5 opacity-70 text-black">
+              <path
+                d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z" />
+              <path
+                d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
+            </svg>
+            <%= f.email_field :email, autocomplete: "email", class:"block mx-auto placeholder-customGray pl-2", placeholder:"E-mail" %>
+          </label>
+        </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <div class="actions text-center mt-10">
+          <%= f.submit t('session_page.Send reset password'),  class: "btn btn-success text-white w-64 max-w-full" %>
+        </div>
+
+      <% end %>
+    </div>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
