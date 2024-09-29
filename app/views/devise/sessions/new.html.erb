@@ -5,7 +5,7 @@
       <%= form_for(resource, as: resource_name, html:{class: "w-1/2 sp:w-auto"}, url: session_path(resource_name)) do |f| %>
       <%# <%= form_for(resource, as: resource_name, html:{class: "w-1/2"}, url: session_path(resource_name)) do |f| %>
         <div class="max-w-64 mx-auto">
-        <label class="input inline-flex items-center h-10 bg-inherit text-customGray rounded-none border-b-2 border-t-0 border-l-0 border-r-0 border-customGray">
+        <label class="input inline-flex items-center h-10 bg-inherit text-customGray rounded-none border-b-2 border-t-0 border-l-0 border-r-0 border-customGray w-full">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 16 16"
@@ -19,7 +19,7 @@
           <%= f.email_field :email, autocomplete: "email", class:"block mx-auto placeholder-customGray pl-2", placeholder:"E-mail" %>
         </label>
 
-        <label class="input inline-flex items-center h-10 bg-inherit text-customGray rounded-none border-b-2 border-t-0 border-l-0 border-r-0 border-customGray mt-5">
+        <label class="input inline-flex items-center h-10 bg-inherit text-customGray rounded-none border-b-2 border-t-0 border-l-0 border-r-0 border-customGray w-full mt-5">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 16 16"
