@@ -43,7 +43,7 @@
           <%= f.submit t('session_page.Login'), class: "btn btn-success text-white w-64 max-w-full" %>
         </div>
         <div class="text-end my-2">
-          <a href="#" class="text-center text-sm hover:opacity-40 transition-all duration-300 linear focus_green">パスワードを忘れた方</a>
+          <%= link_to t('session_page.forget password'), new_user_password_path , class: "text-center text-sm hover:opacity-40 transition-all duration-300 linear focus_green"%>
         </div>
       </div>
       <% end %>
