@@ -10,7 +10,7 @@
     <div class="mx-4 flex justify-between">
       <div class="flex gap-2">
         <label class="input input-bordered flex items-center gap-2 max-w-60 h-full min-h-10 sp:max-w-40">
-          <%= search_form_for @q, class:"grow w-full" do |f| %>
+          <%= search_form_for @q, class:"grow w-full", data: {turbo_frame: "code_search"} do |f| %>
             <%= f.search_field :title_or_user_name_or_tags_tag_name_cont , placeholder: "Search", class:"sp:w-24" %>
             <%= button_tag type: :submit do %>
             <svg
@@ -57,6 +57,7 @@
     </div>
   </div>
   <%# // コードの一覧表示 %>
+  <%= turbo_frame_tag "code_search" do %>
   <div class="hidden tb:block">
     <%= paginate @codes, left: 1, right: 3, outer_window: 3,window: 2 %>
   </div>
@@ -104,7 +105,6 @@
       </div>
     <% end %>
     <%# // お気に入りボタン %>
-
     <%= turbo_frame_tag "favorite_button_#{code.id}" do %>
       <% if user_favorite_code_nil?(code) %>
         <%= link_to code_favorite_path(code), class:"p-1 absolute top-32 left-2 bg-white rounded-md hover:opacity-70 fav-btn-hover", data: { turbo_method: :post} do %>
@@ -125,8 +125,9 @@
         <% end %>
       <% end %>
     <% end %>
-  </div>
+    </div>
   <% end %>
   </div>
   <%= paginate @codes, left: 1, right: 3, outer_window: 3,window: 2 %>
+  <% end %>
 </div>
