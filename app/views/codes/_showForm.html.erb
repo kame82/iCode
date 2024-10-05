@@ -17,6 +17,7 @@
     <div class="flex gap-2">
       <% unless action_name == "new" %>
         <%= turbo_frame_tag "favorite_button" do %>
+        <% if current_user != nil %>
           <% if @favorite == nil %>
             <%# // お気に入りボタン %>
             <%= link_to code_favorite_path(model), class:"btn h-10 min-h-10 flex bg-gray-200 px-3", data: { turbo_method: :post}, remote:true do %>
@@ -35,6 +36,7 @@
               </g>
             </svg>
             <% end %>
+          <% end %>
           <% end %>
         <% end %>
         <%# // Xシェアボタン %>

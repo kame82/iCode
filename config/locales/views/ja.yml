@@ -37,6 +37,7 @@ ja:
     Send reset password: 再発行申請
     Change password: パスワード再設定
     Reset: 再設定
+    forget password: パスワードを忘れた方
   message:
     confirm_delete: 本当に削除しますか？
   errors:
