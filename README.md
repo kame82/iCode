@@ -29,6 +29,10 @@
 
 ### https://icode-app.com/<br>
 
+| ゲスト用 ID      | ゲスト用 PASS |
+| ---------------- | ------------- |
+| guest@sample.com | 1234abcd      |
+
 <br>
 
 # サービス開発の背景
