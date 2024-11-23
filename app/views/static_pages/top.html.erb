@@ -2,6 +2,7 @@
   <h1 class="text-4xl font-bold mb-4 tb:text-3xl">コードストックアプリ "iCode" へようこそ</h1>
   <p class="text-lg mb-8">あなたのコードを簡単に保存、管理、共有できます。</p>
   <div>
+    <% if current_user == nil %>
     <div>
       <%= link_to "ログイン", new_user_session_path, class: "bg-black text-white btn min-w-24" %>
       <%= link_to "新規登録", new_user_registration_path, class: "bg-black text-white btn min-w-24" %>
@@ -9,6 +10,7 @@
     <div>
       <%= link_to "ゲストログイン", users_guest_sign_in_path, class: "bg-black text-white btn min-w-48 mt-1", data: {turbo_method: :post} %>
     </div>
+    <% end %>
     <div class="mt-4">
       <%= link_to "コードを見る", codes_path, class: "border-black bg-white text-black btn min-w-48 mt-1" %>
     </div>
