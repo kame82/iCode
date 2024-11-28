@@ -2,6 +2,8 @@ class Code < ApplicationRecord
   validates :title, presence: true, length: { maximum: 20 }
   enum is_public: { public: 0 , private: 1 }, _prefix: true
 
+  validate :validation_empty_code
+
   belongs_to :user
   has_many :favorites, dependent: :destroy
 
@@ -34,6 +36,12 @@ class Code < ApplicationRecord
 
   def self.ransackable_associations(auth_object = nil)
     ["tags", "user"]
+  end
+
+  def validation_empty_code
+    if body_html.blank? && body_css.blank? && body_js.blank?
+      errors.add(:base, "コードを入力してください")
+    end
   end
 
   private
